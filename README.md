@@ -88,30 +88,15 @@ brew install tesseract
 sudo apt-get install tesseract-ocr
 ```
 
-### 2️⃣ Setup Backend
+### 2️⃣ Setup 
 ```bash
 cd backend
 python -m venv venv
 source venv/bin/activate  # or venv\Scripts\activate (Windows)
 pip install -r requirements.txt
-python run_server.py
+python run_server.py / uvicorn app.main:app --reload
 ```
 
-Server running at: **http://localhost:8000**
-
-### 3️⃣ Setup Frontend
-```bash
-npm install
-npm run dev
-```
-
-Frontend at: **http://localhost:**
-
-### 4️⃣ Start Scanning! 
-
-Open http://localhost:5173 and start uploading product images!
-
----
 
 ##  Documentation
 
