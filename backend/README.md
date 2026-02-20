@@ -1,6 +1,6 @@
 # RISKbite Backend - Setup & Installation Guide
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - Python 3.8+
@@ -72,13 +72,13 @@ python app/main.py
 
 Server will start at: **http://localhost:8000**
 
-## 📚 API Documentation
+##  API Documentation
 
 Once running, visit:
 - **API Docs (Swagger UI):** http://localhost:8000/docs
 - **Alternative Docs (ReDoc):** http://localhost:8000/redoc
 
-## 🔌 Example API Usage
+##  Example API Usage
 
 ### Health Check
 ```bash
@@ -92,7 +92,7 @@ curl -X POST http://localhost:8000/scan \
   -F "conditions=['diabetes', 'peanut_allergy']"
 ```
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 backend/
@@ -113,7 +113,7 @@ backend/
 └── README.md                  # This file
 ```
 
-## 🛠️ Key Components
+##  Key Components
 
 ### 1. **OCR Service** (`ocr_service.py`)
 - Extracts text from product label images
@@ -138,7 +138,7 @@ backend/
   - Human-readable descriptions
   - Safe alternatives
 
-## 🧪 Testing the API
+##  Testing the API
 
 ### Test with Postman or cURL:
 
@@ -172,11 +172,11 @@ curl -X POST http://localhost:8000/scan \
       "alternative": "Sunflower seed butter"
     }
   ],
-  "summary": "⚠️ We found 2 ingredients of concern. We strongly recommend looking for an alternative product."
+  "summary": "We found 2 ingredients of concern. We strongly recommend looking for an alternative product."
 }
 ```
 
-## 🚨 Troubleshooting
+##  Troubleshooting
 
 ### Issue: Tesseract not found
 ```
@@ -202,13 +202,13 @@ source venv/bin/activate  # or activate on Windows
 pip install -r requirements.txt
 ```
 
-## 📊 Performance Notes
+##  Performance Notes
 
 - **OCR Processing:** ~2-5 seconds per image (depends on image quality)
 - **Ingredient Analysis:** ~100ms
 - **Total response time:** 2-6 seconds
 
-## 🔐 Security Considerations (Production)
+##  Security Considerations (Production)
 
 1. **Image Size Limits:** Add file size validation
 2. **Rate Limiting:** Implement request throttling
@@ -217,7 +217,7 @@ pip install -r requirements.txt
 5. **Input Validation:** Sanitize all inputs
 6. **Logging:** Implement structured logging with sensitive data masking
 
-## 📈 Future Enhancements
+##  Future Enhancements
 
 - [ ] Database integration for ingredient tracking
 - [ ] ML-based ingredient recognition (instead of just OCR)
@@ -227,7 +227,7 @@ pip install -r requirements.txt
 - [ ] Nutritional information extraction
 - [ ] Multi-language support
 
-## 📞 Support
+##  Support
 
 For issues or questions:
 1. Check the troubleshooting section
@@ -235,5 +235,3 @@ For issues or questions:
 3. Check Tesseract docs: https://github.com/UB-Mannheim/tesseract/wiki
 
 ---
-
-**Happy Hacking! 🚀**

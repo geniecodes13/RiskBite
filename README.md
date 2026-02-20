@@ -1,6 +1,6 @@
 # 🥗 RISKbite - AI-Powered Ingredient Scanner
 
-> **Smart ingredient analysis for your health** 🎯
+> **Smart ingredient analysis for your health** 
 > 
 > Scan product labels → Extract ingredients → Get personalized health warnings
 
@@ -12,51 +12,51 @@
 
 ---
 
-## 🎯 Problem Statement
+##  Problem Statement
 
 Consumers struggle to understand ingredient labels on packaged products due to:
-- 🤔 Complex chemical names
-- 📝 Unclear health implications
-- 👨‍👩‍👧 Confusion about personal health conditions
-- ⚠️ Hidden allergens and risky ingredients
+-  Complex chemical names
+-  Unclear health implications
+-  Confusion about personal health conditions
+-  Hidden allergens and risky ingredients
 
 **RISKbite solves this** with AI-powered scanning and personalized warnings.
 
 ---
 
-## ✨ Features
+##  Features
 
-### 📷 Product Label Scanning
+###  Product Label Scanning
 - **Drag-and-drop** image upload
 - **AI-powered OCR** (Tesseract)
 - **Instant text extraction** from product images
 - **Scan history** tracking for each user
 
-### 🔐 Authentication & User Management
+###  Authentication & User Management
 - **Email/Password registration** and login
 - **Google OAuth** integration for seamless sign-in
 - **Session management** with secure cookies
 - **Password hashing** with Argon2 algorithm
 
-### 🧠 Intelligent Analysis
+###  Intelligent Analysis
 - **133+ ingredient database** with risk levels(currently exculde emulsifiers and other catalysts)
 - **Ingredient normalization** (handles variants)
 - **Risk scoring** algorithm (0-100)
 - **Natural language health parsing** - users can type their conditions in plain English
 
-### ❤️ Personalized Warnings
+###  Personalized Warnings
 - **21+ health conditions** (Diabetes, Allergies, Gluten, Lactose, Vegan, etc.)
 - **Condition-based filtering**
 - **Friendly explanations** for each issue
 - **Safe alternatives** for risky ingredients
 
-### 📋 Health History
+###  Health History
 - **Save health profile** with natural language input
 - **Automatic condition extraction** from text
 - **Persistent user preferences** across sessions
 - **Scan history** with past results
 
-### 🎨 Beautiful UI
+###  Beautiful UI
 - **Color-coded risk badges** (🔴 High, 🟡 Medium, 🟢 Low)
 - **Loading states** and smooth animations
 - **Fully responsive** (mobile-friendly)
@@ -65,7 +65,7 @@ Consumers struggle to understand ingredient labels on packaged products due to:
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - Python 3.8+
@@ -107,24 +107,24 @@ npm run dev
 
 Frontend at: **http://localhost:**
 
-### 4️⃣ Start Scanning! 🎉
+### 4️⃣ Start Scanning! 
 
 Open http://localhost:5173 and start uploading product images!
 
 ---
 
-## 📖 Documentation
+##  Documentation
 
 | Document | Purpose |
 |----------|---------|
 | **[QUICKSTART.md](QUICKSTART.md)** | 5-minute setup guide |
-| **[PROJECT_SUMMARY.md](PROJECT_SUMMARY.md)** | Full project overview |
+| **[PROJECT_SUMMARY.md](PROJECT_SUMMARY.md)** | Full project overview | 
 | **[backend/README.md](backend/README.md)** | Backend installation & usage |
-| **[backend/ARCHITECTURE.md](backend/ARCHITECTURE.md)** | Technical deep dive |
+| **[ARCHITECTURE.md](ARCHITECTURE.md)** | Technical deep dive |
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -174,7 +174,7 @@ Open http://localhost:5173 and start uploading product images!
 
 ---
 
-## 📦 What's Included
+##  What's Included
 
 ### Frontend
 - ✅ 3 React components (HealthForm, ImageUpload, ResultCard)
@@ -202,7 +202,7 @@ Open http://localhost:5173 and start uploading product images!
 
 ---
 
-## 🎯 Example Usage
+##  Example Usage
 
 ### Frontend: Upload Image
 1. Select health conditions (e.g., Diabetes, Peanut Allergy)
@@ -236,20 +236,20 @@ curl -X POST http://localhost:8000/scan \
 
 ---
 
-## 🧠 Supported Health Conditions
+##  Supported Health Conditions
 
-- 🩺 **Diabetes** - High sugar ingredients
-- 🥜 **Peanut Allergy** - Peanut-related items
-- 🌳 **Nut Allergy** - Tree nuts
-- 🦐 **Shellfish Allergy** - Crustaceans
-- 🌾 **Gluten Sensitivity** - Wheat, barley, rye
-- 🥛 **Lactose Intolerance** - Milk products
-- 🥗 **Vegan** - Animal products
-- 🐟 **Pescatarian** - Meat (fish ok)
+-  **Diabetes** - High sugar ingredients
+-  **Peanut Allergy** - Peanut-related items
+-  **Nut Allergy** - Tree nuts
+-  **Shellfish Allergy** - Crustaceans
+-  **Gluten Sensitivity** - Wheat, barley, rye
+-  **Lactose Intolerance** - Milk products
+-  **Vegan** - Animal products
+-  **Pescatarian** - Meat (fish ok)
 
 ---
 
-## 📊 Ingredient Database
+##  Ingredient Database
 
 **100+ ingredients** covering:
 
@@ -265,7 +265,7 @@ curl -X POST http://localhost:8000/scan \
 
 ---
 
-## 🔧 Tech Stack
+##  Tech Stack
 
 ### Frontend
 - **React 18** - UI library
@@ -288,7 +288,7 @@ curl -X POST http://localhost:8000/scan \
 
 ---
 
-## 📈 Performance
+##  Performance
 
 | Operation | Duration |
 |-----------|----------|
@@ -300,7 +300,7 @@ curl -X POST http://localhost:8000/scan \
 
 ---
 
-## 🚀 Deployment Options
+##  Deployment Options
 
 ### Local Development
 ```bash
@@ -325,7 +325,7 @@ See [DEPLOYMENT.md](backend/DEPLOYMENT.md) for details
 
 ---
 
-## 📸 Screenshots
+##  Screenshots
 
 ### Frontend
 ```
@@ -333,14 +333,14 @@ See [DEPLOYMENT.md](backend/DEPLOYMENT.md) for details
 │  🥗 RISKbite               │
 │  Smart ingredient analysis │
 └─────────────────────────────┘
-│ ❤️ Health Conditions       │
+│  Health Conditions       │
 │ ☑ Diabetes                 │
 │ ☑ Peanut Allergy           │
 │ ☑ Gluten Sensitivity       │
 └─────────────────────────────┘
-│ 📷 Upload Product Label    │
+│  Upload Product Label    │
 │ [Drag & Drop Area]         │
-│ [🔍 Scan Label]            │
+│ [ Scan Label]            │
 └─────────────────────────────┘
 ```
 
@@ -362,7 +362,7 @@ See [DEPLOYMENT.md](backend/DEPLOYMENT.md) for details
 
 ---
 
-## 🔐 Security
+##  Security
 
 - ✅ Input validation (image file types)
 - ✅ CORS protection
@@ -372,7 +372,7 @@ See [DEPLOYMENT.md](backend/DEPLOYMENT.md) for details
 
 ---
 
-## 🆘 Troubleshooting
+##  Troubleshooting
 
 ### Backend Issues
 - **"Tesseract not found"** → Install from: https://github.com/UB-Mannheim/tesseract/wiki
@@ -388,7 +388,7 @@ See [backend/README.md#troubleshooting](backend/README.md#troubleshooting) for m
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 Want to improve RISKbite?
 
@@ -400,13 +400,13 @@ Want to improve RISKbite?
 
 ---
 
-## 📝 License
+##  License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
 
-## 🎉 Next Steps
+##  Next Steps
 
 1. **Quick Start** → [QUICKSTART.md](QUICKSTART.md)
 2. **Full Setup** → [backend/README.md](backend/README.md)
@@ -415,33 +415,30 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-## 📞 Support
+##  Support
 
-- 📖 Check documentation files above
-- 🐛 Review [Troubleshooting](backend/README.md#troubleshooting)
-- 💬 See code comments
-- 📚 Check example code
+-  Check documentation files above
+-  Review [Troubleshooting](backend/README.md#troubleshooting)
+-  See code comments
+-  Check example code
 
 ---
 
-## 🌟 Credits
-
-Built for the hackathon with ❤️
+##  Credits
 
 **Tech Stack:** React, FastAPI, Tesseract, Python
 
 **Features:** OCR, AI Analysis, Personalization
 
-**Theme:** Pink & Modern 🌸
 
 ---
 
-## 🚀 Version
+##  Version
 
-**v1.0.0** - Hackathon Ready
+**v1.0.0** 
 
 ---
 
-**Let's make ingredient transparency mainstream! 🥗**
+**Let's make ingredient transparency mainstream! **
 
 [Get Started →](QUICKSTART.md)

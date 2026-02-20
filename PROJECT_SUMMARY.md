@@ -160,7 +160,7 @@ If User: Vegan
 
 ---
 
-## 💾 Ingredient Knowledge Base
+##  Ingredient Knowledge Base
 
 **100+ Ingredients Covering:**
 
@@ -283,7 +283,7 @@ Frontend: http://localhost:5173
 
 ---
 
-## ✅ Quality Checklist
+##  Quality Checklist
 
 ### Backend
 - ✅ Clean modular architecture
@@ -327,7 +327,7 @@ Frontend: http://localhost:5173
 
 ---
 
-## 🔮 Future Enhancements
+##  Future Enhancements
 
 ### Short Term
 - Add database for ingredient history
@@ -385,10 +385,10 @@ root/
 
 **RISKbite** is a **fully functional, production-ready project** with:
 
-- 🎯 Clear problem statement (consumers don't understand ingredient labels)
-- 🧠 Intelligent solution (OCR + AI analysis + personalization)
-- 🎨 Beautiful frontend (React + pink theme)
-- ⚙️ Robust backend (FastAPI + Tesseract)
-- 📚 Comprehensive documentation
-- ✅ Ready to demo and deploy
+-  Clear problem statement (consumers don't understand ingredient labels)
+-  Intelligent solution (OCR + AI analysis + personalization)
+-  Beautiful frontend (React + pink theme)
+-  Robust backend (FastAPI + Tesseract)
+-  Comprehensive documentation
+-  Ready to demo and deploy
 

@@ -1,6 +1,6 @@
-# 🚀 RISKbite - Complete Hackathon Setup Guide
+#  RISKbite 
 
-## ⚡ Quick Start (5 minutes)
+##  Quick Start (5 minutes)
 
 ### Step 1: Install Tesseract OCR (Required)
 
@@ -49,7 +49,7 @@ bash run_server.sh  # macOS/Linux
 
 ---
 
-## 🔑 OAuth Configuration (Required)
+##  OAuth Configuration (Required)
 
 ### Step 1: Add your Google OAuth credentials
 
@@ -78,7 +78,7 @@ python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
 ---
 
-## 🎯 Feature Testing Checklist
+##  Feature Testing Checklist
 
 ### ✅ Authentication
 - [x] Email/Password Registration
@@ -109,7 +109,7 @@ python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
 ---
 
-## 📖 User Flows
+##  User Flows
 
 ### Flow 1: Google OAuth Login
 ```
@@ -131,7 +131,7 @@ python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
 ---
 
-## 🚨 Important Notes
+##  Important Notes
 
 1. **KEEP `.env` SECRET** - Never commit to git
 2. **First Google login:** Will show "User not found" - Register with email/password first
@@ -141,7 +141,7 @@ python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
 ---
 
-## ✨ Files Changed
+##  Files Changed
 
 ### Backend
 - `app/main.py` → Added OAuth + DB routes
@@ -155,11 +155,11 @@ python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
 ---
 
-**Status:** ✅ READY TO USE
+**Status:**  READY TO USE
 **Backend:** http://localhost:8000
 **Frontend:** http://localhost:5173
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 RISKbite2.0/
@@ -188,7 +188,7 @@ RISKbite2.0/
 
 ---
 
-## 🔧 Troubleshooting
+##  Troubleshooting
 
 ### Issue: "Tesseract not found"
 ```
@@ -222,7 +222,7 @@ Solution: Use a clearer product label image
 
 ---
 
-## 📚 API Endpoints
+##  API Endpoints
 
 ### Health Check
 ```bash
@@ -250,13 +250,13 @@ Response:
       "alternative": "Stevia or Erythritol"
     }
   ],
-  "summary": "⚠️ We found 2 ingredients of concern..."
+  "summary": " We found 2 ingredients of concern..."
 }
 ```
 
 ---
 
-## 🧪 Testing
+##  Testing
 
 ### Test with API Docs (Swagger UI)
 1. Server running? Visit: http://localhost:8000/docs
@@ -285,7 +285,7 @@ curl -X POST http://localhost:8000/scan \
 
 ---
 
-## 📋 Supported Health Conditions
+##  Supported Health Conditions
 
 ```json
 [
@@ -302,7 +302,7 @@ curl -X POST http://localhost:8000/scan \
 
 ---
 
-## 🎯 What Backend Does
+##  What Backend Does
 
 1. **Receives Image**
    - Validates file is image
@@ -329,7 +329,7 @@ curl -X POST http://localhost:8000/scan \
 
 ---
 
-## 💡 Example Ingredients Database
+##  Example Ingredients Database
 
 Backend includes 100+ ingredients:
 
@@ -358,7 +358,7 @@ Each ingredient has:
 
 ---
 
-## 🎬 Demo Flow
+##  Demo Flow
 
 ```
 1. User opens frontend (http://localhost:5173)
@@ -381,7 +381,7 @@ Each ingredient has:
 
 ---
 
-## 🚀 Performance Tips
+##  Performance Tips
 
 - **OCR Speed:** Clear labels = faster (2-3 sec). Blurry = slower (5-8 sec)
 - **Use GPU:** For production, consider GPU acceleration
@@ -390,7 +390,7 @@ Each ingredient has:
 
 ---
 
-## 📞 Need Help?
+##  Need Help?
 
 1. Check [backend/README.md](backend/README.md) for detailed setup
 2. Check [backend/ARCHITECTURE.md](backend/ARCHITECTURE.md) for code docs
@@ -398,32 +398,3 @@ Each ingredient has:
 4. Check error messages in server logs
 
 ---
-
-## ✅ Hackathon Checklist
-
-- [ ] Tesseract installed & working
-- [ ] Backend running on http://localhost:8000
-- [ ] Frontend running on http://localhost:5173
-- [ ] Health check passes: `curl http://localhost:8000/`
-- [ ] Can upload image to http://localhost:8000/docs
-- [ ] Frontend connects to backend (no CORS errors)
-- [ ] Full scan works end-to-end
-- [ ] Multiple conditions work
-- [ ] Error handling works (bad image, etc.)
-- [ ] Results display correctly in frontend
-
----
-
-## 🎉 Ready to Demo!
-
-Your RISKbite system is now ready for:
-- Live hackathon demos
-- Investor presentations
-- User testing
-- Feedback collection
-
-Good luck! 🥗
-
----
-
-**Questions?** See backend/README.md or ARCHITECTURE.md

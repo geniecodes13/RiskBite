@@ -1,6 +1,6 @@
-# 🏗️ RISKbite 4.0 - System Architecture
+#  RISKbite - System Architecture
 
-## 📊 High-Level Architecture
+##  High-Level Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -78,7 +78,7 @@
 
 ---
 
-## 🔄 Authentication Flow
+##  Authentication Flow
 
 ### Google OAuth Flow
 ```
@@ -122,12 +122,12 @@ User enters email + password
       Save    Error Msg
         │
         ▼
-    Logged In ✅
+    Logged In 
 ```
 
 ---
 
-## 📦 Database Schema
+##  Database Schema
 
 ### Users Table
 ```
@@ -154,7 +154,7 @@ User enters email + password
 
 ---
 
-## 🔗 API Request/Response Flow
+##  API Request/Response Flow
 
 ### Registration Request
 ```
@@ -224,7 +224,7 @@ Response 200 OK:
 
 ---
 
-## 🔐 Security Architecture
+##  Security Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -265,7 +265,7 @@ Response 200 OK:
 
 ---
 
-## 📊 Data Flow Diagram
+##  Data Flow Diagram
 
 ```
 User Input
@@ -293,7 +293,7 @@ User Input
     │  Response to Frontend
     │      │
     │      ▼
-    │  User Logged In ✅
+    │  User Logged In 
     │
     │
     ├─ Health Data (JSON)
@@ -322,12 +322,12 @@ User Input
     │  Response ("Saved")
     │      │
     │      ▼
-    │  Display Last Saved ✅
+    │  Display Last Saved 
 ```
 
 ---
 
-## 🚀 Deployment Architecture (Production Ready)
+##  Deployment Architecture (Production Ready)
 
 ```
 ┌────────────────────────────────────────────────────────────────┐
@@ -373,7 +373,7 @@ User Input
 
 ---
 
-## ✨ Component Interaction
+##  Component Interaction
 
 ```
 Frontend Components
@@ -412,7 +412,7 @@ Frontend Components
 
 ---
 
-## 📈 Request/Response Timeline
+##  Request/Response Timeline
 
 ```
 T=0ms    User clicks "Login"
@@ -433,7 +433,7 @@ T=40ms   ├─ Generate response
 T=50ms   └─ Frontend processes response
 │        └─ Display user info
 │
-T=60ms   User sees "Logged in: user@gmail.com" ✅
+T=60ms   User sees "Logged in: user@gmail.com" 
 ```
 
 ---
