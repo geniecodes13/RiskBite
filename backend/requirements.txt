@@ -1,0 +1,23 @@
+ 
+# Core API Framework
+fastapi
+uvicorn
+
+# Image Processing & OCR
+Pillow
+pytesseract
+
+# Data Validation
+pydantic
+
+# CORS handling
+python-multipart
+
+# Optional: For async support & performance
+httpx
+
+# Development
+python-dotenv
+sqlalchemy
+passlib[argon2]
+authlib

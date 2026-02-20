@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<!-- 
+  ==========================================
+  RiskBite Landing Page
+  ==========================================
+  Homepage showcasing AI-powered food label analysis
+  Features: Hero section, upload scanner, how it works, frequently flagged chemicals
+-->
+<html lang="en">
+<head>
+  <!-- Essential Meta Tags -->
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>RiskBite | Analyze Food Labels for Harmful Chemicals</title>
+  
+  <!-- Tailwind CSS Framework -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- Google Fonts: Manrope Typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet" />
+  
+  <!-- Google Material Symbols for Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+  
+  <!-- Tailwind Configuration: Custom Colors & Theme -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#13ec5b",                  /* Green accent color for CTAs */
+            "background-light": "#f6f8f6",        /* Light mode background */
+            "background-dark": "#102216",         /* Dark mode background */
+          },
+          fontFamily: {
+            "display": ["Manrope", "sans-serif"]  /* Primary font family */
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+  
+  <!-- Global Styles -->
+  <style>
+    html {
+      scroll-behavior: smooth;  /* Enable smooth scrolling for anchor links */
+    }
+    
+    body {
+      font-family: 'Manrope', sans-serif;  /* Apply Manrope font globally */
+    }
+    
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;  /* Material icon settings */
+    }
+  </style>
+</head>
+
+<!-- ==========================================
+     PAGE BODY
+     ========================================== -->
+<body class="bg-background-light dark:bg-background-dark text-[#0d1b12] antialiased">
+
+  <!-- ==========================================
+       HEADER NAVIGATION
+       Sticky navigation with logo, links, and auth buttons
+       ========================================== -->
+  <header class="sticky top-0 z-50 w-full border-b border-solid border-[#e7f3eb] bg-white/80 backdrop-blur-md px-6 md:px-20 py-4">
+    <div class="max-w-[1200px] mx-auto flex items-center justify-between">
+      <!-- Logo Section -->
+      <div class="flex items-center gap-3">
+        <img src="image/logo.jpg" alt="RiskBite Logo" class="h-10 w-auto" />
+        <h2 class="text-[#0d1b12] text-xl font-extrabold tracking-tight">RiskBite</h2>
+      </div>
+      
+      <!-- Navigation Links (Hidden on Mobile) -->
+      <nav class="hidden md:flex items-center gap-10">
+        <a class="text-[#0d1b12]/70 hover:text-primary transition-colors text-sm font-semibold" href="landing.html#how-it-works">How it Works</a>
+        <a class="text-[#0d1b12]/70 hover:text-primary transition-colors text-sm font-semibold" href="landing.html#faq">FAQ</a>
+        <a class="text-[#0d1b12]/70 hover:text-primary transition-colors text-sm font-semibold" href="landing.html#about">About</a>
+      </nav>
+      
+      <!-- Authentication Buttons -->
+      <div class="flex items-center gap-3">
+        <!-- Login Button (Hidden on Small Screens) -->
+        <a href="login.html" class="hidden sm:flex min-w-[100px] cursor-pointer items-center justify-center rounded-lg h-11 px-5 bg-[#e7f3eb] text-[#0d1b12] text-sm font-bold hover:bg-[#d5e8db] transition-colors">
+          Login
+        </a>
+        <!-- Sign Up Button -->
+        <a href="login.html" class="flex min-w-[100px] cursor-pointer items-center justify-center rounded-lg h-11 px-5 bg-primary text-[#0d1b12] text-sm font-bold shadow-sm hover:opacity-90 transition-all">
+          Sign Up
+        </a>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ==========================================
+       MAIN CONTENT
+       ========================================== -->
+  <main class="layout-container flex flex-col">
+    <!-- ==========================================
+         HERO SECTION
+         Left: Headlines and CTA | Right: Label preview image
+         ========================================== -->
+    <section class="max-w-[1200px] mx-auto px-6 py-12 md:py-20 flex flex-col lg:flex-row items-center gap-12">
+      <!-- LEFT: HERO TEXT AND BUTTONS -->
+      <div class="flex-1 flex flex-col gap-8">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full w-fit">
+          <span class="material-symbols-outlined text-primary text-sm">verified_user</span>
+          <span class="text-[12px] font-bold text-[#0d1b12] uppercase tracking-wider">AI-Powered Safety Analysis</span>
+        </div>
+        
+        <!-- Main Headline -->
+        <h1 class="text-[#0d1b12] text-5xl md:text-6xl font-extrabold leading-[1.1] tracking-tight">
+          Know what's inside. <br />
+          <span class="text-primary">RiskBite</span> analyzes labels for hidden chemicals.
+        </h1>
+        
+        <!-- Subheadline -->
+        <p class="text-lg text-[#0d1b12]/70 leading-relaxed max-w-[540px]">
+          Instantly identify harmful additives, synthetic dyes, and endocrine disruptors. Upload a photo and understand the health risks of your favorite foods.
+        </p>
+        
+        <!-- CTA Buttons Section -->
+        <div class="flex flex-wrap gap-4">
+          <!-- Get Started Button (Navigates to Scan Section) -->
+          <a href="landing.html#upload-scanner" class="flex items-center gap-2 bg-[#0d1b12] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#1a2e20] transition-all">
+            <span class="material-symbols-outlined">rocket_launch</span>  <!-- Rocket icon -->
+            Get Started Free
+          </a>
+          
+          <!-- Social Proof Section -->
+          <div class="flex items-center gap-3 px-4">
+            <!-- User Avatars (Overlapped) -->
+            <div class="flex -space-x-2">
+              <div class="w-8 h-8 rounded-full border-2 border-white bg-gray-200" data-alt="User avatar placeholder"></div>
+              <div class="w-8 h-8 rounded-full border-2 border-white bg-gray-300" data-alt="User avatar placeholder"></div>
+              <div class="w-8 h-8 rounded-full border-2 border-white bg-gray-400" data-alt="User avatar placeholder"></div>
+            </div>
+            <!-- Trust Text -->
+            <span class="text-sm font-medium text-[#0d1b12]/60">Trusted by 10k+ health-conscious users</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- RIGHT: HERO IMAGE WITH ALERT CARD -->
+      <div class="flex-1 w-full max-w-[500px]">
+        <!-- Image Container with Dotted Pattern -->
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl bg-white border border-[#e7f3eb] aspect-square flex items-center justify-center p-4">
+          <!-- Decorative Dot Pattern Background -->
+          <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#13ec5b 1px, transparent 1px); background-size: 20px 20px;"></div>
+          
+          <!-- Nutrition Label Image -->
+          <div class="w-full h-full rounded-2xl bg-cover bg-center" 
+               data-alt="A macro shot of a nutrition facts label on a food package" 
+               style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC-4HIH6xxhDwGrdoV14REQDzXS8ihcb5ILypSnfqUyupNPr86tk_Z8f6tdmsSm5woRXcR4ReMp29fVQUf4X9ZRqepX7uXfGl9JSl2F6SenoDmVk86ldCumJcya3sLmp_D2uLhsDe6JHzksz6tBu7KlFOgeRgzSiYstRXnBuPGsXlzcREj3VDZu4YE640OpEi01WQukcLIll1Tl5FFJixFBpIDrR1RMiM1HyRkjgxjNZTwM_8MoqLtmbctidvmqvILcMvK4sBxjw8o');"></div>
+          
+          <!-- Floating Alert Card (Overlaid) -->
+          <div class="absolute bottom-8 left-8 right-8 bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-primary/20">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-orange-500">warning</span>  <!-- Warning icon -->
+              <div>
+                <p class="text-xs font-bold text-gray-500 uppercase tracking-tighter">Alert Found</p>
+                <p class="text-sm font-bold text-[#0d1b12]">Preservatives and additives detected in Ingredients</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         SCANNER UPLOAD SECTION
+         Drag-and-drop file upload area
+         ========================================== -->
+    <section id="upload-scanner" class="bg-white py-20 border-y border-[#e7f3eb]">
+      <div class="max-w-[960px] mx-auto px-6">
+        <!-- Section Header -->
+        <div class="text-center mb-10">
+          <h2 class="text-3xl font-extrabold text-[#0d1b12] mb-3">Upload or Scan Label</h2>
+          <p class="text-[#0d1b12]/60">Get your health report in seconds</p>
+        </div>
+        
+        <!-- Upload Drop Zone -->
+        <div class="relative group">
+          <div class="flex flex-col items-center gap-6 rounded-3xl border-4 border-dashed border-[#cfe7d7] bg-[#f8fcf9] px-6 py-20 transition-all hover:border-primary hover:bg-[#f2fcf5]">
+            <!-- Upload Icon -->
+            <div class="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+              <span class="material-symbols-outlined text-4xl">cloud_upload</span>  <!-- Cloud upload icon -->
+            </div>
+            
+            <!-- Upload Instructions -->
+            <div class="flex max-w-[480px] flex-col items-center gap-2">
+              <p class="text-[#0d1b12] text-2xl font-bold tracking-tight text-center">Drop food label image here</p>
+              <p class="text-[#0d1b12]/50 text-sm font-medium text-center">Support for JPEG, PNG, and PDF files up to 10MB</p>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="flex gap-4">
+              <!-- Browse Files Button (Opens file input) -->
+              <button onclick="document.getElementById('fileInput').click()" class="flex min-w-[160px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-primary text-[#0d1b12] text-sm font-bold shadow-sm hover:opacity-90">
+                Browse Files
+              </button>
+              <input type="file" id="fileInput" class="hidden" accept="image/*,.pdf" />
+              <!-- Take Photo Button (Opens camera) -->
+              <button onclick="document.getElementById('cameraInput').click()" class="flex min-w-[160px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 border border-[#cfe7d7] bg-white text-[#0d1b12] text-sm font-bold hover:bg-[#f8fcf9]">
+                <span class="material-symbols-outlined mr-2">photo_camera</span>  <!-- Camera icon -->
+                Take Photo
+              </button>
+              <input type="file" id="cameraInput" class="hidden" accept="image/*" capture="environment" />
+            </div>
+          </div>
+          
+          <!-- Floating Animated Badge -->
+          <div class="absolute -top-4 -right-4 bg-orange-100 text-orange-700 px-4 py-2 rounded-full border border-orange-200 shadow-sm flex items-center gap-2 animate-bounce">
+            <span class="material-symbols-outlined text-sm">bolt</span>  <!-- Lightning bolt icon -->
+            <span class="text-xs font-bold uppercase">Fast Analysis</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         HOW IT WORKS SECTION
+         Three-step process explanation
+         ========================================== -->
+    <section id="how-it-works" class="max-w-[1200px] mx-auto px-6 py-24">
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
+        <div class="flex flex-col gap-4">
+          <h2 class="text-[#0d1b12] text-4xl font-extrabold tracking-tight">How it Works</h2>
+          <p class="text-[#0d1b12]/60 text-lg max-w-[600px]">Three simple steps to decode your food and protect your health using advanced image recognition and toxicological data.</p>
+        </div>
+        <!-- Learn More Link -->
+        <a class="text-primary font-bold flex items-center gap-2 group" href="landing.html#how-it-works">
+          Learn more about our AI
+          <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>  <!-- Arrow icon -->
+        </a>
+      </div>
+      
+      <!-- Three Steps Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- STEP 1: SCAN -->
+        <div class="flex flex-col gap-6 p-8 rounded-3xl border border-[#cfe7d7] bg-white shadow-sm hover:shadow-md transition-shadow">
+          <!-- Icon -->
+          <div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center text-[#0d1b12] shadow-sm shadow-primary/40">
+            <span class="material-symbols-outlined text-3xl font-bold">photo_camera</span>  <!-- Camera icon -->
+          </div>
+          <!-- Content -->
+          <div class="flex flex-col gap-3">
+            <h3 class="text-[#0d1b12] text-xl font-extrabold tracking-tight">1. Scan</h3>
+            <p class="text-[#0d1b12]/60 leading-relaxed">
+              Snap a high-quality photo of any food ingredient label or nutritional facts panel using your phone or webcam.
+            </p>
+          </div>
+        </div>
+        
+        <!-- STEP 2: ANALYZE -->
+        <div class="flex flex-col gap-6 p-8 rounded-3xl border border-[#cfe7d7] bg-white shadow-sm hover:shadow-md transition-shadow relative">
+          <!-- Icon -->
+          <div class="w-14 h-14 bg-[#0d1b12] rounded-2xl flex items-center justify-center text-primary shadow-sm">
+            <span class="material-symbols-outlined text-3xl font-bold">query_stats</span>  <!-- Chart icon -->
+          </div>
+          <!-- Content -->
+          <div class="flex flex-col gap-3">
+            <h3 class="text-[#0d1b12] text-xl font-extrabold tracking-tight">2. Analyze</h3>
+            <p class="text-[#0d1b12]/60 leading-relaxed">
+              Our proprietary AI cross-references 5,000+ chemicals, synthetic additives, and potential allergens in real-time.
+            </p>
+          </div>
+        </div>
+        
+        <!-- STEP 3: UNDERSTAND -->
+        <div class="flex flex-col gap-6 p-8 rounded-3xl border border-[#cfe7d7] bg-white shadow-sm hover:shadow-md transition-shadow">
+          <!-- Icon -->
+          <div class="w-14 h-14 bg-[#e7f3eb] rounded-2xl flex items-center justify-center text-[#0d1b12]">
+            <span class="material-symbols-outlined text-3xl font-bold">verified</span>  <!-- Verified checkmark icon -->
+          </div>
+          <!-- Content -->
+          <div class="flex flex-col gap-3">
+            <h3 class="text-[#0d1b12] text-xl font-extrabold tracking-tight">3. Understand</h3>
+            <p class="text-[#0d1b12]/60 leading-relaxed">
+              Receive a clear, color-coded risk score and a detailed breakdown of every ingredient and its health implications.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         FREQUENTLY FLAGGED CHEMICALS SECTION
+         Common harmful substances showcase
+         ========================================== -->
+    <section id="frequently-flagged" class="bg-primary/5 py-24">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <!-- Section Header -->
+        <div class="flex flex-col items-center text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-[#0d1b12] mb-6">Frequently Flagged Chemicals</h2>
+          <p class="text-lg text-[#0d1b12]/60 max-w-[700px]">RiskBite helps you spot these common but potentially harmful substances that are often hidden behind complex names.</p>
+        </div>
+        
+        <!-- Chemicals Grid (4 columns, 2 columns on mobile) -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- CARD 1: Artificial Dyes -->
+          <div class="bg-white p-6 rounded-2xl border border-[#cfe7d7] flex flex-col gap-2">
+            <span class="material-symbols-outlined text-orange-400">palette</span>  <!-- Palette icon -->
+            <p class="font-bold text-[#0d1b12]">Artificial Dyes</p>
+            <p class="text-xs text-[#0d1b12]/50">Linked to hyperactivity and allergic reactions.</p>
+          </div>
+          
+          <!-- CARD 2: BHA & BHT -->
+          <div class="bg-white p-6 rounded-2xl border border-[#cfe7d7] flex flex-col gap-2">
+            <span class="material-symbols-outlined text-orange-400">science</span>  <!-- Science icon -->
+            <p class="font-bold text-[#0d1b12]">BHA &amp; BHT</p>
+            <p class="text-xs text-[#0d1b12]/50">Common preservatives identified as endocrine disruptors.</p>
+          </div>
+          
+          <!-- CARD 3: High Fructose Syrup -->
+          <div class="bg-white p-6 rounded-2xl border border-[#cfe7d7] flex flex-col gap-2">
+            <span class="material-symbols-outlined text-orange-400">water_drop</span>  <!-- Water drop icon -->
+            <p class="font-bold text-[#0d1b12]">High Fructose Syrup</p>
+            <p class="text-xs text-[#0d1b12]/50">Associated with metabolic syndrome and inflammation.</p>
+          </div>
+          
+          <!-- CARD 4: MSG Derivatives -->
+          <div class="bg-white p-6 rounded-2xl border border-[#cfe7d7] flex flex-col gap-2">
+            <span class="material-symbols-outlined text-orange-400">masks</span>  <!-- Masks icon -->
+            <p class="font-bold text-[#0d1b12]">MSG Derivatives</p>
+            <p class="text-xs text-[#0d1b12]/50">Hidden excitotoxins that can cause headaches and fatigue.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         FOOTER
+         Company info, links, newsletter, copyright
+         ========================================== -->
+    <footer class="bg-[#0d1b12] text-white py-16">
+      <div class="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+        <!-- COLUMN 1: Brand Section -->
+        <div class="flex flex-col gap-6 md:col-span-1">
+          <!-- Logo -->
+          <div class="flex items-center gap-3">
+            <div class="bg-primary p-1 rounded-lg">
+              <span class="material-symbols-outlined text-[#0d1b12] font-bold">biotech</span>  <!-- Biotech icon -->
+            </div>
+            <h2 class="text-white text-xl font-extrabold">RiskBite</h2>
+          </div>
+          <!-- Brand Description -->
+          <p class="text-white/50 text-sm leading-relaxed">Empowering consumers with real-time chemical analysis and health insights through AI technology.</p>
+        </div>
+        
+        <!-- COLUMN 2: Platform Links -->
+        <div class="flex flex-col gap-6">
+          <h4 class="text-primary font-bold uppercase text-xs tracking-widest">Platform</h4>
+          <ul class="flex flex-col gap-4 text-sm text-white/70">
+            <li><a class="hover:text-primary transition-colors" href="scan.html">Scanner Tool</a></li>
+            <li><a class="hover:text-primary transition-colors" href="landing.html#frequently-flagged">Risk Database</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#">API Integration</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#">Mobile App</a></li>
+          </ul>
+        </div>
+        
+        <!-- COLUMN 3: Company Links -->
+        <div class="flex flex-col gap-6">
+          <h4 class="text-primary font-bold uppercase text-xs tracking-widest">Company</h4>
+          <ul class="flex flex-col gap-4 text-sm text-white/70">
+            <li><a class="hover:text-primary transition-colors" href="landing.html#about">About Us</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#">Scientific Board</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#">Press &amp; Media</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#">Contact</a></li>
+          </ul>
+        </div>
+        
+        <!-- COLUMN 4: Newsletter Signup -->
+        <div class="flex flex-col gap-6">
+          <h4 class="text-primary font-bold uppercase text-xs tracking-widest">Newsletter</h4>
+          <p class="text-sm text-white/50">Get weekly updates on safe food alternatives.</p>
+          <!-- Email Signup Form -->
+          <div class="flex gap-2">
+            <input class="bg-white/10 border-white/20 rounded-lg h-10 px-4 text-sm w-full focus:outline-none focus:ring-1 focus:ring-primary" 
+                   placeholder="Email address" 
+                   type="email" />
+            <button class="bg-primary text-[#0d1b12] font-bold px-4 rounded-lg text-sm hover:opacity-90">Join</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Footer Bottom: Copyright and Legal Links -->
+      <div class="max-w-[1200px] mx-auto px-6 mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/30">
+        <p>© 2024 RiskBite Health Technologies Inc. All rights reserved.</p>
+        <!-- Legal Links -->
+        <div class="flex gap-6">
+          <a class="hover:text-white transition-colors" href="#privacy">Privacy Policy</a>
+          <a class="hover:text-white transition-colors" href="#terms">Terms of Service</a>
+          <a class="hover:text-white transition-colors" href="#cookies">Cookie Settings</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+</body>
+</html>

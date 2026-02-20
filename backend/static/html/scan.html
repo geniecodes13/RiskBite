@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RiskBite Ingredient Analysis Results</title>
+  
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#13ec5b",
+            "background-light": "#f6f8f6",
+            "background-dark": "#102216",
+          },
+          fontFamily: {
+            "display": ["Manrope", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer base {
+      body {
+        font-family: 'Manrope', sans-serif;
+      }
+    }
+    
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cfe7d7;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#0d1b12] font-display">
+
+  <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+    
+    <!-- Header -->
+    <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e7f3eb] bg-white px-6 lg:px-10 py-3 sticky top-0 z-50">
+      
+      <div class="flex items-center gap-8">
+        
+        <a href="/" class="flex items-center gap-4 text-[#0d1b12] hover:opacity-80 transition-opacity">
+          <img src="/static/image/logo.jpg" alt="RiskBite Logo" class="h-10 w-10 object-cover rounded"/>
+          <div class="flex flex-col">
+            <h2 class="text-[#0d1b12] text-xl font-bold leading-none tracking-[-0.015em]">RiskBite</h2>
+            <span class="text-[8px] font-bold tracking-widest text-[#4c9a66] uppercase">Know Your Bite</span>
+          </div>
+        </a>
+        
+        <nav class="hidden lg:flex items-center gap-9">
+          <a class="text-[#0d1b12] text-sm font-medium leading-normal hover:text-primary transition-colors" href="/dashboard">Dashboard</a>
+          <a class="text-[#0d1b12] text-sm font-medium leading-normal hover:text-primary transition-colors border-b-2 border-primary" href="/scan">Analysis</a>
+          <a class="text-[#0d1b12] text-sm font-medium leading-normal hover:text-primary transition-colors" href="/">Community</a>
+        </nav>
+        
+      </div>
+      
+      <div class="flex flex-1 justify-end gap-6 items-center">
+        
+        <label class="hidden md:flex flex-col min-w-40 h-10 max-w-64">
+          <div class="flex w-full flex-1 items-stretch rounded-lg h-full border border-[#cfe7d7]">
+            <div class="text-[#4c9a66] flex bg-[#e7f3eb] items-center justify-center pl-4 rounded-l-lg">
+              <span class="material-symbols-outlined">search</span>
+            </div>
+            <input class="form-input flex w-full min-w-0 flex-1 border-none bg-[#e7f3eb] focus:ring-0 h-full placeholder:text-[#4c9a66] px-4 rounded-r-lg text-sm" placeholder="Search additives..." value=""/>
+          </div>
+        </label>
+        
+        <div class="flex gap-2">
+          <button class="flex items-center justify-center rounded-lg h-10 w-10 bg-[#e7f3eb] text-[#0d1b12] hover:bg-primary/20 transition-all">
+            <span class="material-symbols-outlined">notifications</span>
+          </button>
+          <a href="/dashboard" class="flex items-center justify-center rounded-lg h-10 w-10 bg-[#e7f3eb] text-[#0d1b12] hover:bg-primary/20 transition-all">
+            <span class="material-symbols-outlined">account_circle</span>
+          </a>
+        </div>
+        
+      </div>
+      
+    </header>
+    
+    <!-- Main Content -->
+    <div class="flex flex-1 overflow-hidden">
+      
+      <!-- Sidebar -->
+      <aside class="w-64 bg-white border-r border-[#e7f3eb] flex flex-col h-[calc(100vh-65px)] sticky top-[65px] hidden xl:flex">
+        
+        <div class="p-6 flex flex-col gap-6 overflow-y-auto custom-scrollbar">
+          
+          <div>
+            <h3 class="text-[#4c9a66] text-xs font-bold uppercase tracking-wider mb-4">Core Navigation</h3>
+            <div class="flex flex-col gap-1">
+              <a href="/scan" class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-[#0d1b12] font-semibold hover:bg-primary/20 transition-colors">
+                <span class="material-symbols-outlined">history</span>
+                <p class="text-sm">Recent Scans</p>
+              </a>
+              <a href="/dashboard#saved-reports" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#f8fcf9] text-[#0d1b12] transition-colors">
+                <span class="material-symbols-outlined">bookmark</span>
+                <p class="text-sm">Saved Reports</p>
+              </a>
+              <a href="/dashboard#health-trends" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#f8fcf9] text-[#0d1b12] transition-colors">
+                <span class="material-symbols-outlined">analytics</span>
+                <p class="text-sm">Health Trends</p>
+              </a>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-[#4c9a66] text-xs font-bold uppercase tracking-wider mb-4">Recent History</h3>
+            <div class="flex flex-col gap-3" id="recentScansList">
+              <p class="text-sm text-gray-500">No recent scans</p>
+            </div>
+          </div>
+          
+        </div>
+        
+        <div class="mt-auto p-6 border-t border-[#e7f3eb]">
+          <a href="/login" class="flex items-center gap-3 px-3 py-2 text-[#0d1b12] hover:text-red-600 hover:bg-red-50 rounded transition-colors" id="logoutLink">
+            <span class="material-symbols-outlined">logout</span>
+            <p class="text-sm font-medium">Logout</p>
+          </a>
+        </div>
+        
+      </aside>
+      
+      <!-- Main Area -->
+      <main class="flex-1 overflow-y-auto p-4 lg:p-8 bg-background-light">
+        
+        <!-- Page Header -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
+          
+          <div>
+            <nav class="flex gap-2 text-xs text-[#4c9a66] mb-2">
+              <a href="/dashboard">Dashboard</a>
+              <span>/</span>
+              <span>Analysis</span>
+            </nav>
+            <h1 class="text-2xl lg:text-3xl font-black tracking-tight text-[#0d1b12]" id="pageTitle">Scan Results</h1>
+            <p class="text-[#4c9a66] mt-1 flex items-center gap-2 text-sm">
+              <span class="material-symbols-outlined text-sm">event</span> 
+              <span id="scanDate">Loading...</span>
+            </p>
+          </div>
+          
+          <div class="flex flex-wrap gap-3">
+            <button onclick="handleShare()" class="flex items-center gap-2 px-4 h-11 bg-white border border-[#cfe7d7] rounded-lg text-sm font-bold hover:bg-[#f8fcf9] transition-all" title="Share report via email">
+              <span class="material-symbols-outlined">share</span> 
+              Share
+            </button>
+            <button onclick="handleDownload()" class="flex items-center gap-2 px-4 h-11 bg-white border border-[#cfe7d7] rounded-lg text-sm font-bold hover:bg-[#f8fcf9] transition-all" title="Download report">
+              <span class="material-symbols-outlined">download</span> 
+              Download
+            </button>
+            <button onclick="document.getElementById('rescanFileInput').click(); return false;" class="flex items-center gap-2 px-6 h-11 bg-primary text-[#0d1b12] rounded-lg text-sm font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all whitespace-nowrap" title="Scan another food label">
+              <span class="material-symbols-outlined">refresh</span> 
+              Re-scan Label
+            </button>
+            <input id="rescanFileInput" type="file" accept="image/*,.pdf" style="display: none;" />
+          </div>
+          
+        </div>
+        
+        <!-- Executive Summary -->
+        <div class="bg-white rounded-xl border border-[#cfe7d7] p-6 mb-8 shadow-sm" id="summaryCard">
+          <!-- Loading state -->
+          <div class="w-full text-center py-8">
+            <span class="material-symbols-outlined text-4xl animate-spin text-primary">sync</span>
+            <p class="mt-4 text-gray-500">Loading scan results...</p>
+          </div>
+        </div>
+
+        <!-- Prominent Health Warnings Section -->
+        <div class="bg-white rounded-xl border-2 border-red-200 p-6 mb-8 shadow-lg" id="warningsSection" style="display: none;">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="material-symbols-outlined text-red-500 text-3xl">warning</span>
+            <div>
+              <h2 class="text-xl font-black text-red-600">⚠️ Health Warnings</h2>
+              <p class="text-sm text-gray-600">Ingredients that may affect your health</p>
+            </div>
+            <span class="ml-auto bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full" id="warningCountBadge">0</span>
+          </div>
+          
+          <!-- Warnings Container -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="warningsContainer">
+            <!-- Warnings will be populated here -->
+          </div>
+        </div>
+        
+        <!-- Results Area -->
+        <div class="flex flex-col xl:flex-row gap-8" id="resultsArea" style="display: none;">
+          
+          <!-- Left: Scanned Label -->
+          <div class="w-full xl:w-5/12 flex flex-col gap-4">
+            
+            <div class="bg-white rounded-xl border border-[#cfe7d7] overflow-hidden flex flex-col h-[500px] xl:h-[650px] shadow-sm">
+              
+              <div class="p-4 border-b border-[#e7f3eb] flex justify-between items-center bg-[#fcfdfc]">
+                <h3 class="font-bold text-sm flex items-center gap-2">
+                  <span class="material-symbols-outlined text-primary">image</span> 
+                  Scanned Label
+                </h3>
+                <div class="flex gap-2">
+                  <button class="p-1 hover:bg-[#e7f3eb] rounded"><span class="material-symbols-outlined text-sm">zoom_in</span></button>
+                  <button class="p-1 hover:bg-[#e7f3eb] rounded"><span class="material-symbols-outlined text-sm">zoom_out</span></button>
+                </div>
+              </div>
+              
+              <div class="flex-1 p-6 overflow-y-auto custom-scrollbar bg-[#fafafa]">
+                <div class="relative rounded-lg border border-[#e2e8f0] bg-white p-8 shadow-inner min-h-full">
+                  <div id="ocrText" class="relative z-10 leading-relaxed font-mono text-sm text-slate-700 space-y-4">
+                    <p class="text-gray-400 text-center">OCR text will appear here</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-[#13ec5b]/5 border border-primary/20 rounded-xl p-4 flex items-start gap-3">
+              <span class="material-symbols-outlined text-primary">lightbulb</span>
+              <p class="text-xs text-[#0d1b12] leading-tight">
+                <span class="font-bold">Pro Tip:</span> High-risk items now include healthy swap suggestions to help you make better shopping choices.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Right: Analysis Results -->
+          <div class="w-full xl:w-7/12">
+            <div class="bg-white rounded-xl border border-[#cfe7d7] overflow-hidden shadow-sm flex flex-col" id="ingredientsTable">
+              
+              <div class="p-4 border-b border-[#e7f3eb] flex flex-wrap justify-between items-center bg-[#fcfdfc] gap-4">
+                <h3 class="font-bold text-sm flex items-center gap-2">
+                  <span class="material-symbols-outlined text-primary">list_alt</span> 
+                  Analysis Results
+                </h3>
+              </div>
+              
+              <div class="flex-1 overflow-x-auto custom-scrollbar overflow-y-auto" id="ingredientsList">
+                <!-- Ingredients will be populated here -->
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+      </main>
+      
+    </div>
+    
+  </div>
+
+  <!-- Notification Container -->
+  <div id="notification" class="fixed top-5 right-5 p-4 rounded-lg font-semibold z-[9999] hidden"></div>
+
+  <!-- Scripts -->
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/scan.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if user is logged in
+      if (!RiskBiteAPI.isLoggedIn()) {
+        window.location.href = '/login?msg=login_required';
+        return;
+      }
+
+      // Set current date
+      document.getElementById('scanDate').textContent = new Date().toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+
+      // Handle rescan
+      const rescanInput = document.getElementById('rescanFileInput');
+      if (rescanInput) {
+        rescanInput.addEventListener('change', handleRescan);
+      }
+
+      // Handle logout
+      const logoutLink = document.getElementById('logoutLink');
+      if (logoutLink) {
+        logoutLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          if (confirm('Are you sure you want to logout?')) {
+            RiskBiteAPI.logout();
+            window.location.href = '/login';
+          }
+        });
+      }
+
+      // Load results
+      loadScanResults();
+    });
+
+    async function loadScanResults() {
+      const resultJson = sessionStorage.getItem('scanResult');
+      const scanImageName = sessionStorage.getItem('scanImageName');
+      
+      if (!resultJson) {
+        showNotification('No scan results found. Redirecting to dashboard...', 'error');
+        setTimeout(() => window.location.href = '/dashboard', 2000);
+        return;
+      }
+
+      try {
+        const result = JSON.parse(resultJson);
+        
+        // Update page title
+        if (scanImageName) {
+          document.getElementById('pageTitle').textContent = `Results: ${scanImageName}`;
+        }
+
+        // Display summary
+        displaySummary(result);
+
+        // Display OCR text
+        displayOCRText(result);
+
+        // Display ingredients
+        displayIngredients(result);
+
+        // Show results area
+        document.getElementById('resultsArea').style.display = 'flex';
+
+      } catch (error) {
+        console.error('Error loading results:', error);
+        showNotification('Error loading scan results', 'error');
+      }
+    }
+
+    function displaySummary(result) {
+      const summaryCard = document.getElementById('summaryCard');
+      const riskScore = result.risk_score || 0;
+      const riskLevel = result.risk_level || 'MODERATE';
+      
+      const riskColors = {
+        'LOW': { bg: 'bg-primary', text: 'text-primary', border: 'border-primary' },
+        'MODERATE': { bg: 'bg-yellow-500', text: 'text-yellow-500', border: 'border-yellow-500' },
+        'HIGH': { bg: 'bg-red-500', text: 'text-red-500', border: 'border-red-500' }
+      };
+      
+      const colors = riskColors[riskLevel] || riskColors['MODERATE'];
+      
+      const warnings = result.warnings || [];
+      const warningCount = warnings.length;
+      
+      summaryCard.innerHTML = `
+        <div class="w-full md:w-1/3 md:border-r border-[#e7f3eb] md:pr-8">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-bold text-lg">Safety Score</h3>
+            <span class="material-symbols-outlined text-[#4c9a66]">info</span>
+          </div>
+          <div class="flex items-center gap-6">
+            <div class="relative flex items-center justify-center w-24 h-24 rounded-full border-8 ${colors.border}">
+              <span class="text-3xl font-black ${colors.text}">${Math.round(riskScore)}</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-xs font-bold ${colors.bg} bg-opacity-20 px-2 py-1 rounded w-fit mb-1 uppercase">${riskLevel} Safety</span>
+              <p class="text-sm text-[#4c9a66] leading-snug">${warningCount} warnings found</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flex-1">
+          <div class="flex items-center gap-2 ${colors.text} mb-2">
+            <span class="material-symbols-outlined">warning</span>
+            <h3 class="font-bold uppercase tracking-wide text-xs">Health Alerts (${warningCount})</h3>
+          </div>
+          
+          <p class="text-[#0d1b12] text-base leading-relaxed mb-4" id="alertDescription">
+            ${result.summary || 'Analysis complete. Review ingredients below.'}
+          </p>
+          
+          <div class="flex flex-wrap gap-2" id="alertTags">
+            ${warnings.slice(0, 3).map(w => `
+              <div class="flex items-center gap-1 bg-[#fef2f2] text-red-700 px-3 py-1.5 rounded-full text-xs font-bold border border-red-100">
+                ${w.ingredient}
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    function displayOCRText(result) {
+      const ocrText = document.getElementById('ocrText');
+      if (result.extracted_text) {
+        // Highlight ingredients in the text
+        let html = '<p class="uppercase font-bold border-b border-slate-200 pb-2 mb-4">Extracted Ingredients:</p><p>';
+        
+        const ingredients = result.ingredients || [];
+        const text = result.extracted_text;
+        
+        // Simple highlighting
+        let highlightedText = text;
+        ingredients.forEach(ing => {
+          const regex = new RegExp(ing, 'gi');
+          highlightedText = highlightedText.replace(regex, `<span class="bg-yellow-100 font-bold">${ing}</span>`);
+        });
+        
+        html += highlightedText + '</p>';
+        ocrText.innerHTML = html;
+      } else {
+        ocrText.innerHTML = '<p class="text-gray-400">No text extracted from image</p>';
+      }
+    }
+
+    function displayIngredients(result) {
+      const container = document.getElementById('ingredientsList');
+      const ingredients = result.ingredients || [];
+      const explanations = result.explanations || {};
+      const warnings = result.warnings || [];
+      
+      // Create warning lookup
+      const warningMap = {};
+      warnings.forEach(w => {
+        warningMap[w.ingredient.toLowerCase()] = w;
+      });
+      
+      let html = '<table class="w-full text-left border-collapse min-w-[500px]">';
+      html += `
+        <thead class="bg-[#f8fcf9] sticky top-0 z-10 border-b border-[#e7f3eb]">
+          <tr>
+            <th class="px-4 lg:px-6 py-4 text-[10px] font-bold text-[#4c9a66] uppercase tracking-wider w-1/4">Ingredient</th>
+            <th class="px-4 lg:px-6 py-4 text-[10px] font-bold text-[#4c9a66] uppercase tracking-wider w-1/4">Explanation</th>
+            <th class="px-4 lg:px-6 py-4 text-[10px] font-bold text-[#4c9a66] uppercase tracking-wider w-1/6">Risk</th>
+            <th class="px-4 lg:px-6 py-4 text-[10px] font-bold text-[#4c9a66] uppercase tracking-wider w-1/3">Alternative</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-[#e7f3eb]">
+      `;
+      
+      ingredients.forEach(ing => {
+        const warning = warningMap[ing.toLowerCase()];
+        const explanation = explanations[ing] || 'No explanation available';
+        
+        if (warning) {
+          // High risk
+          html += `
+            <tr class="hover:bg-[#fef2f2] transition-colors">
+              <td class="px-4 lg:px-6 py-5">
+                <p class="font-bold text-[#0d1b12] text-sm">${ing}</p>
+              </td>
+              <td class="px-4 lg:px-6 py-5">
+                <p class="text-[13px] text-[#4c9a66] leading-snug">${warning.reason}</p>
+              </td>
+              <td class="px-4 lg:px-6 py-5">
+                <span class="bg-red-500 text-white text-[9px] font-black px-2 py-1 rounded-full uppercase whitespace-nowrap">High Risk</span>
+              </td>
+              <td class="px-4 lg:px-6 py-5">
+                <div class="bg-white/60 p-2 rounded border border-red-100 flex items-start gap-2">
+                  <span class="material-symbols-outlined text-green-600 text-sm">recommend</span>
+                  <p class="text-[11px] font-medium text-[#0d1b12] leading-tight">${warning.alternative || 'N/A'}</p>
+                </div>
+              </td>
+            </tr>
+          `;
+        } else {
+          // Low risk
+          html += `
+            <tr class="hover:bg-primary/5 transition-colors">
+              <td class="px-4 lg:px-6 py-5">
+                <p class="font-bold text-[#0d1b12] text-sm">${ing}</p>
+              </td>
+              <td class="px-4 lg:px-6 py-5">
+                <p class="text-[13px] text-[#4c9a66] leading-snug">${explanation}</p>
+              </td>
+              <td class="px-4 lg:px-6 py-5">
+                <span class="bg-primary text-[#0d1b12] text-[9px] font-black px-2 py-1 rounded-full uppercase whitespace-nowrap">Low Risk</span>
+              </td>
+              <td class="px-4 lg:px-6 py-5">
+                <span class="text-[10px] text-[#999] italic">Safe</span>
+              </td>
+            </tr>
+          `;
+        }
+      });
+      
+      html += '</tbody></table>';
+      container.innerHTML = html;
+    }
+
+    async function handleRescan(e) {
+      const files = e.target.files;
+      if (files && files.length > 0) {
+        const file = files[0];
+        
+        showNotification('Processing new scan...', 'info');
+        
+        try {
+          const userId = RiskBiteAPI.getUserId();
+          let userConditions = [];
+          
+          try {
+            const healthHistory = await RiskBiteAPI.getHealthHistory(userId);
+            if (healthHistory.ok && healthHistory.history && healthHistory.history.conditions) {
+              userConditions = healthHistory.history.conditions;
+            }
+          } catch(e) {
+            console.log('Could not retrieve health history');
+          }
+          
+          const scanResult = await RiskBiteAPI.scanProduct(file, userConditions, userId);
+          sessionStorage.setItem('scanResult', JSON.stringify(scanResult));
+          sessionStorage.setItem('scanImageName', file.name);
+          
+          showNotification('Scan complete!', 'success');
+          setTimeout(() => location.reload(), 1000);
+          
+        } catch (error) {
+          showNotification('Scan failed: ' + error.message, 'error');
+        }
+      }
+    }
+
+    function handleShare() {
+      const result = JSON.parse(sessionStorage.getItem('scanResult') || '{}');
+      const scanImageName = sessionStorage.getItem('scanImageName') || 'Product Scan';
+      
+      const text = `Check out my RiskBite analysis for ${scanImageName} - Risk Level: ${result.risk_level}, Score: ${Math.round(result.risk_score)}%`;
+      
+      if (navigator.share) {
+        navigator.share({
+          title: 'RiskBite Analysis Report',
+          text: text,
+          url: window.location.href
+        }).catch(err => console.log('Share cancelled:', err));
+      } else {
+        navigator.clipboard.writeText(text + '\n' + window.location.href);
+        showNotification('Report link copied to clipboard!', 'success');
+      }
+    }
+
+    function handleDownload() {
+      const result = JSON.parse(sessionStorage.getItem('scanResult') || '{}');
+      const scanImageName = sessionStorage.getItem('scanImageName') || 'Product Scan';
+      
+      const content = `
+RiskBite Analysis Report
+========================
+Product: ${scanImageName}
+Date: ${new Date().toLocaleString()}
+Risk Level: ${result.risk_level}
+Risk Score: ${Math.round(result.risk_score)}%
+
+Ingredients Found:
+${result.ingredients ? result.ingredients.join(', ') : 'None'}
+
+Warnings:
+${result.warnings ? result.warnings.map(w => `- ${w.ingredient}: ${w.reason} (Alternative: ${w.alternative})`).join('\n') : 'None'}
+
+Summary:
+${result.summary || 'No summary available'}
+      `;
+      
+      const blob = new Blob([content], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `riskbite-${Date.now()}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      
+      showNotification('Report downloaded!', 'success');
+    }
+
+    // Notification function
+    function showNotification(message, type = 'info') {
+      const notification = document.getElementById('notification');
+      const colors = {
+        'success': 'bg-primary text-[#0d1b12]',
+        'error': 'bg-red-500 text-white',
+        'info': 'bg-blue-500 text-white'
+      };
+      
+      notification.className = 'fixed top-5 right-5 p-4 rounded-lg font-semibold z-[9999] ' + (colors[type] || colors['info']);
+      notification.textContent = message;
+      notification.classList.remove('hidden');
+      
+      setTimeout(() => {
+        notification.classList.add('hidden');
+      }, 5000);
+    }
+  </script>
+</body>
+</html>

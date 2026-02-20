@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<!-- 
+  ==========================================
+  RiskBite Login & Sign-up Page
+  ==========================================
+  A modern, responsive authentication page for the RiskBite application
+  Features: Dark mode support, Social login, Remember me functionality
+-->
+<html class="light" lang="en">
+<head>
+  <!-- Essential Meta Tags -->
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>RiskBite | Login &amp; Sign-up</title>
+  
+  <!-- Tailwind CSS Framework -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- Google Fonts: Manrope for Typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+  
+  <!-- Material Icons for UI Elements -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  
+  <!-- Material Symbols -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+  
+  <!-- Tailwind Configuration: Custom Colors & Theme -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#13ec5b",                    /* Green accent color */
+            "background-light": "#f6f8f6",           /* Light mode background */
+            "background-dark": "#102216",            /* Dark mode background */
+            "neutral-soft": "#e8ece8",               /* Light neutral borders */
+            "neutral-dark": "#1a2e20",               /* Dark neutral text */
+          },
+          fontFamily: {
+            "display": ["Manrope"]                   /* Primary font */
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      }
+    }
+  </script>
+  
+  <!-- Global Styles -->
+  <style>
+    body {
+      font-family: 'Manrope', sans-serif;
+      /* Ensures consistent typography across all browsers */
+    }
+  </style>
+</head>
+
+<!-- ==========================================
+     PAGE BODY
+     ========================================== -->
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex items-center justify-center font-display antialiased">
+  <!-- ==========================================
+       MAIN AUTH CONTAINER
+       Two-column layout: Hero image (left) + Login form (right)
+       ========================================== -->
+  <div class="flex flex-col md:flex-row w-full max-w-6xl h-screen md:h-[800px] bg-white dark:bg-neutral-dark md:rounded-xl shadow-2xl overflow-hidden m-0 md:m-4">
+    
+    <!-- ==========================================
+         LEFT SIDE: HERO IMAGE SECTION
+         Displays brand imagery with gradient overlay
+         ========================================== -->
+    <div class="relative w-full md:w-1/2 h-64 md:h-auto overflow-hidden">
+      <!-- Background Image: Organic vegetables -->
+      <img 
+        alt="Fresh organic vegetables" 
+        class="absolute inset-0 w-full h-full object-cover" 
+        data-alt="High-quality image of fresh organic vegetables and fruits" 
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiEFBJwpdRExmmlCRc63WO5FzaSO9Clpm_pDEQ85m-NkU0rFu3yR8m-18P9psHgOQINQCfe76L2HyV98CKpjLSu3ObAPoe-4HLVnt1oCe43vDaT3ljU8prapALwriqmyztMHPg5g9FbKCZZDwAfeRUwb6cb6Hok-RAU9FLBIPTz2IsEm9jBs9aI7S4unwanankbkztGP976aFRHjbamvvPA7xvPZ7syf9M0IPA8eKrVuAPsVRp2l6EpwtieYk5omzlwt6XZd1qyO0" 
+      />
+      
+      <!-- Dark Gradient Overlay: Adds text readability -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+      
+      <!-- Hero Content: Logo, Title, Description -->
+      <div class="absolute inset-0 flex flex-col justify-end p-10 md:p-16 text-white">
+        <!-- RiskBite Logo and Brand Name (Clickable - Links to Landing Page) -->
+        <a href="landing.html" class="flex items-center gap-2 mb-4 hover:opacity-80 transition-opacity">
+          
+          <img src="image/logo.jpg" alt="RiskBite Logo" class="h-10 w-auto" />
+          
+          <span class="text-3xl font-extrabold tracking-tight">RiskBite</span>
+        </a>
+        
+        <!-- Main Hero Headline -->
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4">
+          Know what's <span class="text-primary underline decoration-2 underline-offset-8">inside</span>.
+        </h1>
+        
+        <!-- Hero Subtitle -->
+        <p class="text-lg text-white/80 max-w-md font-medium">
+          Analyze food labels, identify harmful chemicals, and make informed choices for your health.
+        </p>
+      </div>
+    </div>
+    
+    <!-- ==========================================
+         RIGHT SIDE: LOGIN FORM SECTION
+         ========================================== -->
+    <div class="w-full md:w-1/2 h-full flex flex-col bg-white dark:bg-neutral-dark p-8 md:p-16 overflow-y-auto">
+      <!-- Form Container: Max width normalization -->
+      <div class="w-full max-w-md mx-auto">
+        <!-- Header Section: Welcome message and instructions -->
+        <div class="mb-10">
+          <h2 class="text-3xl font-bold text-neutral-dark dark:text-white mb-2">Welcome Back</h2>
+          <p class="text-gray-500 dark:text-gray-400">Please enter your details to sign in to your account.</p>
+        </div>
+        
+        <!-- ==========================================
+             LOGIN FORM
+             Contains email, password, remember me
+             ========================================== -->
+        <form class="space-y-6">
+          <!-- EMAIL INPUT FIELD -->
+          <div>
+            <label class="block text-sm font-semibold text-neutral-dark dark:text-gray-300 mb-2" for="email">
+              Email Address
+            </label>
+            <input 
+              class="w-full px-4 py-3 rounded-lg border-2 border-neutral-soft dark:border-gray-700 bg-transparent focus:border-primary focus:ring-0 transition-colors outline-none dark:text-white" 
+              id="email" 
+              placeholder="hello@example.com" 
+              type="email"
+            />
+          </div>
+          
+          <!-- PASSWORD INPUT FIELD -->
+          <div>
+            <!-- Password Label + Forgot Password Link -->
+            <div class="flex justify-between mb-2">
+              <label class="block text-sm font-semibold text-neutral-dark dark:text-gray-300" for="password">
+                Password
+              </label>
+              <a class="text-sm font-bold text-primary hover:opacity-80 transition-opacity" href="login.html#forgot-password">
+                Forgot Password?
+              </a>
+            </div>
+            
+            <!-- Password Input with Show/Hide Toggle -->
+            <div class="relative">
+              <input 
+                class="w-full px-4 py-3 rounded-lg border-2 border-neutral-soft dark:border-gray-700 bg-transparent focus:border-primary focus:ring-0 transition-colors outline-none dark:text-white" 
+                id="password" 
+                placeholder="••••••••" 
+                type="password"
+              />
+              <!-- Eye Icon: Toggle password visibility -->
+              <button class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600" type="button">
+                <span class="material-icons text-xl">visibility</span>
+              </button>
+            </div>
+          </div>
+          
+          <!-- REMEMBER ME CHECKBOX -->
+          <div class="flex items-center">
+            <input 
+              class="h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" 
+              id="remember-me" 
+              type="checkbox"
+            />
+            <label class="ml-3 block text-sm text-neutral-dark dark:text-gray-300" for="remember-me">
+              Remember me for 30 days
+            </label>
+          </div>
+          
+          <!-- LOGIN BUTTON (Navigates to Dashboard) -->
+          <a 
+            class="w-full bg-primary hover:bg-primary/90 text-neutral-dark font-bold py-4 px-6 rounded-lg transition-all transform active:scale-[0.98] shadow-lg shadow-primary/20 flex items-center justify-center" 
+            href="dashboard.html"
+          >
+            Log In
+          </a>
+        </form>
+        
+        <!-- ==========================================
+             DIVIDER: Visual separation
+             ========================================== -->
+        <div class="relative my-10">
+          <div class="absolute inset-0 flex items-center">
+            <div class="w-full border-t border-neutral-soft dark:border-gray-700"></div>
+          </div>
+          <div class="relative flex justify-center text-sm">
+            <span class="px-4 bg-white dark:bg-neutral-dark text-gray-500 uppercase tracking-widest text-xs font-bold">Or continue with</span>
+          </div>
+        </div>
+        
+        <!-- ==========================================
+             SOCIAL LOGIN BUTTONS
+             Google and Apple authentication options
+             ========================================== -->
+        <div class="grid grid-cols-2 gap-4">
+          <!-- GOOGLE LOGIN BUTTON (Navigates to Dashboard) -->
+          <a href="dashboard.html" class="flex items-center justify-center gap-2 px-4 py-3 border-2 border-neutral-soft dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+            <!-- Google Logo -->
+            <svg class="w-5 h-5" viewbox="0 0 24 24">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+            </svg>
+            <span class="text-sm font-semibold text-neutral-dark dark:text-white">Google</span>
+          </a>
+          
+          <!-- APPLE LOGIN BUTTON (Navigates to Dashboard) -->
+          <a href="dashboard.html" class="flex items-center justify-center gap-2 px-4 py-3 border-2 border-neutral-soft dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+            <!-- Apple Logo -->
+            <svg class="w-5 h-5 fill-current dark:text-white" viewbox="0 0 24 24">
+              <path d="M17.05 20.28c-.96.95-2.06 1.94-3.32 1.94-1.24 0-1.63-.76-3.08-.76-1.45 0-1.9.74-3.08.76-1.24.02-2.43-1.12-3.38-2.06-1.96-1.94-3.46-5.48-3.46-8.8 0-5.32 3.3-8.14 6.45-8.14 1.62 0 3.14 1.13 4.14 1.13 1 0 2.84-1.36 4.77-1.16 1.34.14 2.5.7 3.23 1.54-.15.09-2.73 1.57-2.7 4.7.03 3.8 3.12 5.08 3.16 5.1-.03.08-.49 1.67-1.58 2.75M12.03 5.4c-.03-2.7 2.22-4.93 4.88-5.02.26 2.88-2.6 5.23-4.88 5.02"></path>
+            </svg>
+            <span class="text-sm font-semibold text-neutral-dark dark:text-white">Apple</span>
+          </a>
+        </div>
+        
+        <!-- Footer: Sign up link -->
+        <div class="mt-12 text-center">
+          <p class="text-gray-500 dark:text-gray-400">
+            Don't have an account? 
+            <a class="text-primary font-bold hover:underline decoration-2 underline-offset-4" href="landing.html">
+              Sign Up for free
+            </a>
+          </p>
+        </div>
+        
+        <!-- ==========================================
+             TRUST BADGES
+             Security certifications and compliance info
+             ========================================== -->
+        <div class="mt-auto pt-10 flex items-center justify-center gap-8 opacity-40 grayscale hover:grayscale-0 transition-all">
+          <!-- SSL Security Badge -->
+          <div class="flex flex-col items-center">
+            <span class="material-icons text-2xl">verified_user</span>
+            <span class="text-[10px] uppercase font-bold tracking-tighter">Secure SSL</span>
+          </div>
+          
+          <!-- FDA Compliance Badge -->
+          <div class="flex flex-col items-center">
+            <span class="material-icons text-2xl">gpp_good</span>
+            <span class="text-[10px] uppercase font-bold tracking-tighter">FDA Compliant</span>
+          </div>
+          
+          <!-- Data Privacy Badge -->
+          <div class="flex flex-col items-center">
+            <span class="material-icons text-2xl">privacy_tip</span>
+            <span class="text-[10px] uppercase font-bold tracking-tighter">Data Privacy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- ==========================================
+       BACKGROUND DECORATIVE ELEMENTS
+       Blurred gradient circles for modern design
+       ========================================== -->
+  <!-- Top-right decorative blur -->
+  <div class="hidden lg:block absolute top-0 right-0 -z-10 w-1/3 h-full bg-primary/5 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2"></div>
+  
+  <!-- Bottom-left decorative blur -->
+  <div class="hidden lg:block absolute bottom-0 left-0 -z-10 w-1/4 h-1/2 bg-primary/10 blur-3xl rounded-full -translate-x-1/2 translate-y-1/2"></div>
+
+</body>
+</html>

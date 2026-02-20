@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>RiskBite | Login &amp; Sign-up</title>
+  
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+  
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#13ec5b",
+            "background-light": "#f6f8f6",
+            "background-dark": "#102216",
+            "neutral-soft": "#e8ece8",
+            "neutral-dark": "#1a2e20",
+          },
+          fontFamily: {
+            "display": ["Manrope"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      }
+    }
+  </script>
+  
+  <style>
+    body {
+      font-family: 'Manrope', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex items-center justify-center font-display antialiased">
+  <div class="flex flex-col md:flex-row w-full max-w-6xl h-screen md:h-[800px] bg-white dark:bg-neutral-dark md:rounded-xl shadow-2xl overflow-hidden m-0 md:m-4">
+    
+    <!-- LEFT SIDE: HERO IMAGE SECTION -->
+    <div class="relative w-full md:w-1/2 h-64 md:h-auto overflow-hidden">
+      <img 
+        alt="Fresh organic vegetables" 
+        class="absolute inset-0 w-full h-full object-cover" 
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiEFBJwpdRExmmlCRc63WO5FzaSO9Clpm_pDEQ85m-NkU0rFu3yR8m-18P9psHgOQINQCfe76L2HyV98CKpjLSu3ObAPoe-4HLVnt1oCe43vDaT3ljU8prapALwriqmyztMHPg5g9FbKCZZDwAfeRUwb6cb6Hok-RAU9FLBIPTz2IsEm9jBs9aI7S4unwanankbkztGP976aFRHjbamvvPA7xvPZ7syf9M0IPA8eKrVuAPsVRp2l6EpwtieYk5omzlwt6XZd1qyO0" 
+      />
+      
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+      
+      <div class="absolute inset-0 flex flex-col justify-end p-10 md:p-16 text-white">
+        <a href="/" class="flex items-center gap-2 mb-4 hover:opacity-80 transition-opacity">
+          <img src="/static/image/logo.jpg" alt="RiskBite Logo" class="h-10 w-auto" />
+          <span class="text-3xl font-extrabold tracking-tight">RiskBite</span>
+        </a>
+        
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4">
+          Know what's <span class="text-primary underline decoration-2 underline-offset-8">inside</span>.
+        </h1>
+        
+        <p class="text-lg text-white/80 max-w-md font-medium">
+          Analyze food labels, identify harmful chemicals, and make informed choices for your health.
+        </p>
+      </div>
+    </div>
+    
+    <!-- RIGHT SIDE: LOGIN FORM SECTION -->
+    <div class="w-full md:w-1/2 h-full flex flex-col bg-white dark:bg-neutral-dark p-8 md:p-16 overflow-y-auto">
+      <div class="w-full max-w-md mx-auto">
+        <div class="mb-10">
+          <h2 class="text-3xl font-bold text-neutral-dark dark:text-white mb-2">Welcome Back</h2>
+          <p class="text-gray-500 dark:text-gray-400">Please enter your details to sign in to your account.</p>
+        </div>
+        
+        <!-- Login Form -->
+        <form class="space-y-6" id="loginForm">
+          <!-- Email Input -->
+          <div>
+            <label class="block text-sm font-semibold text-neutral-dark dark:text-gray-300 mb-2" for="email">
+              Email Address
+            </label>
+            <input 
+              class="w-full px-4 py-3 rounded-lg border-2 border-neutral-soft dark:border-gray-700 bg-transparent focus:border-primary focus:ring-0 transition-colors outline-none dark:text-white" 
+              id="email" 
+              placeholder="hello@example.com" 
+              type="email"
+              required
+            />
+          </div>
+          
+          <!-- Password Input -->
+          <div>
+            <div class="flex justify-between mb-2">
+              <label class="block text-sm font-semibold text-neutral-dark dark:text-gray-300" for="password">
+                Password
+              </label>
+              <a class="text-sm font-bold text-primary hover:opacity-80 transition-opacity" href="#forgot-password">
+                Forgot Password?
+              </a>
+            </div>
+            
+            <div class="relative">
+              <input 
+                class="w-full px-4 py-3 rounded-lg border-2 border-neutral-soft dark:border-gray-700 bg-transparent focus:border-primary focus:ring-0 transition-colors outline-none dark:text-white" 
+                id="password" 
+                placeholder="••••••••" 
+                type="password"
+                required
+              />
+              <button class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600" type="button" id="togglePassword">
+                <span class="material-icons text-xl">visibility</span>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Remember Me -->
+          <div class="flex items-center">
+            <input 
+              class="h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" 
+              id="remember-me" 
+              type="checkbox"
+            />
+            <label class="ml-3 block text-sm text-neutral-dark dark:text-gray-300" for="remember-me">
+              Remember me for 30 days
+            </label>
+          </div>
+          
+          <!-- Login Button -->
+          <button 
+            type="submit"
+            class="w-full bg-primary hover:bg-primary/90 text-neutral-dark font-bold py-4 px-6 rounded-lg transition-all transform active:scale-[0.98] shadow-lg shadow-primary/20 flex items-center justify-center"
+            id="loginBtn"
+          >
+            Log In
+          </button>
+          
+          <!-- Error Message -->
+          <div id="errorMessage" class="hidden bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm"></div>
+        </form>
+        
+        <!-- Divider -->
+        <div class="relative my-10">
+          <div class="absolute inset-0 flex items-center">
+            <div class="w-full border-t border-neutral-soft dark:border-gray-700"></div>
+          </div>
+          <div class="relative flex justify-center text-sm">
+            <span class="px-4 bg-white dark:bg-neutral-dark text-gray-500 uppercase tracking-widest text-xs font-bold">Or continue with</span>
+          </div>
+        </div>
+        
+        <!-- Social Login Buttons -->
+        <div class="grid grid-cols-2 gap-4">
+          <!-- Google Login -->
+          <button id="googleLoginBtn" class="flex items-center justify-center gap-2 px-4 py-3 border-2 border-neutral-soft dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+            <svg class="w-5 h-5" viewbox="0 0 24 24">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+            </svg>
+            <span class="text-sm font-semibold text-neutral-dark dark:text-white">Google</span>
+          </button>
+          
+          <!-- Apple Login (Placeholder) -->
+          <button class="flex items-center justify-center gap-2 px-4 py-3 border-2 border-neutral-soft dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+            <svg class="w-5 h-5 fill-current dark:text-white" viewbox="0 0 24 24">
+              <path d="M17.05 20.28c-.96.95-2.06 1.94-3.32 1.94-1.24 0-1.63-.76-3.08-.76-1.45 0-1.9.74-3.08.76-1.24.02-2.43-1.12-3.38-2.06-1.96-1.94-3.46-5.48-3.46-8.8 0-5.32 3.3-8.14 6.45-8.14 1.62 0 3.14 1.13 4.14 1.13 1 0 2.84-1.36 4.77-1.16 1.34.14 2.5.7 3.23 1.54-.15.09-2.73 1.57-2.7 4.7.03 3.8 3.12 5.08 3.16 5.1-.03.08-.49 1.67-1.58 2.75M12.03 5.4c-.03-2.7 2.22-4.93 4.88-5.02.26 2.88-2.6 5.23-4.88 5.02"></path>
+            </svg>
+            <span class="text-sm font-semibold text-neutral-dark dark:text-white">Apple</span>
+          </button>
+        </div>
+        
+        <div class="mt-12 text-center">
+          <p class="text-gray-500 dark:text-gray-400">
+            Don't have an account? 
+            <a class="text-primary font-bold hover:underline decoration-2 underline-offset-4" href="#" id="signUpLink">
+              Sign Up for free
+            </a>
+          </p>
+        </div>
+        
+        <!-- Trust Badges -->
+        <div class="mt-auto pt-10 flex items-center justify-center gap-8 opacity-40 grayscale hover:grayscale-0 transition-all">
+          <div class="flex flex-col items-center">
+            <span class="material-icons text-2xl">verified_user</span>
+            <span class="text-[10px] uppercase font-bold tracking-tighter">Secure SSL</span>
+          </div>
+          
+          <div class="flex flex-col items-center">
+            <span class="material-icons text-2xl">gpp_good</span>
+            <span class="text-[10px] uppercase font-bold tracking-tighter">FDA Compliant</span>
+          </div>
+          
+          <div class="flex flex-col items-center">
+            <span class="material-icons text-2xl">privacy_tip</span>
+            <span class="text-[10px] uppercase font-bold tracking-tighter">Data Privacy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Background Decorative -->
+  <div class="hidden lg:block absolute top-0 right-0 -z-10 w-1/3 h-full bg-primary/5 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2"></div>
+  <div class="hidden lg:block absolute bottom-0 left-0 -z-10 w-1/4 h-1/2 bg-primary/10 blur-3xl rounded-full -translate-x-1/2 translate-y-1/2"></div>
+
+  <!-- Notification Container -->
+  <div id="notification" class="fixed top-5 right-5 p-4 rounded-lg font-semibold z-[9999] hidden"></div>
+
+  <!-- Scripts -->
+  <script src="/static/js/api.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if already logged in
+      if (RiskBiteAPI.isLoggedIn()) {
+        window.location.href = '/dashboard';
+        return;
+      }
+      
+      // Check for OAuth callback params
+      const oauthResult = RiskBiteAPI.handleOAuthCallback();
+      if (oauthResult) {
+        showNotification('Login successful!', 'success');
+        setTimeout(() => {
+          window.location.href = '/dashboard';
+        }, 1000);
+        return;
+      }
+      
+      // Check for error messages in URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const msg = urlParams.get('msg');
+      if (msg === 'login_required') {
+        showNotification('Please login to scan products', 'info');
+      } else if (msg === 'oauth_redirect_error') {
+        showNotification('OAuth redirect error. Please try again.', 'error');
+      } else if (msg === 'oauth_token_error') {
+        showNotification('OAuth token error. Please try again.', 'error');
+      } else if (msg === 'user_not_found') {
+        const email = urlParams.get('email');
+        showNotification('Account not found. Please sign up first!', 'error');
+      }
+      
+      // Toggle password visibility
+      const togglePassword = document.getElementById('togglePassword');
+      const passwordInput = document.getElementById('password');
+      if (togglePassword && passwordInput) {
+        togglePassword.addEventListener('click', function() {
+          const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+          passwordInput.setAttribute('type', type);
+          this.querySelector('span').textContent = type === 'password' ? 'visibility' : 'visibility_off';
+        });
+      }
+      
+      // Login form submission
+      const loginForm = document.getElementById('loginForm');
+      const loginBtn = document.getElementById('loginBtn');
+      const errorMessage = document.getElementById('errorMessage');
+      
+      if (loginForm) {
+        loginForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+          const rememberMe = document.getElementById('remember-me').checked;
+          
+          // Show loading
+          loginBtn.disabled = true;
+          loginBtn.innerHTML = '<span class="material-icons-round animate-spin">sync</span> Logging in...';
+          errorMessage.classList.add('hidden');
+          
+          try {
+            // Try to login
+            const result = await RiskBiteAPI.login(email, password);
+            
+            // Save email if remember me
+            if (rememberMe) {
+              localStorage.setItem('remembered_email', email);
+            }
+            
+            showNotification('Login successful!', 'success');
+            
+            // Check for pending file
+            const pendingFile = sessionStorage.getItem('pendingFile');
+            if (pendingFile) {
+              window.location.href = '/scan-results';
+            } else {
+              window.location.href = '/dashboard';
+            }
+          } catch (error) {
+            // If user doesn't exist, offer to register
+            if (error.message.includes('not found')) {
+              errorMessage.innerHTML = 'Account not found. <a href="#" id="registerLink" class="font-bold underline">Create one?</a>';
+              errorMessage.classList.remove('hidden');
+              
+              document.getElementById('registerLink').addEventListener('click', async function(e) {
+                e.preventDefault();
+                // Auto-register
+                try {
+                  await RiskBiteAPI.register(email, password);
+                  showNotification('Account created! Please log in.', 'success');
+                } catch (regError) {
+                  errorMessage.textContent = regError.message;
+                  errorMessage.classList.remove('hidden');
+                }
+              });
+            } else {
+              errorMessage.textContent = error.message;
+              errorMessage.classList.remove('hidden');
+            }
+          } finally {
+            loginBtn.disabled = false;
+            loginBtn.textContent = 'Log In';
+          }
+        });
+      }
+      
+      // Google OAuth login
+      const googleLoginBtn = document.getElementById('googleLoginBtn');
+      if (googleLoginBtn) {
+        googleLoginBtn.addEventListener('click', function() {
+          RiskBiteAPI.initiateGoogleLogin();
+        });
+      }
+      
+      // Sign up link - switch to signup mode
+      const signUpLink = document.getElementById('signUpLink');
+      if (signUpLink) {
+        signUpLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          // Change form to signup mode
+          document.querySelector('h2').textContent = 'Create Account';
+          document.querySelector('#loginForm .text-gray-500').textContent = 'Enter your details to create a new account.';
+          loginBtn.textContent = 'Sign Up';
+          signUpLink.textContent = 'Already have an account? Log in';
+          
+          // Change handler
+          loginForm.onsubmit = async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            loginBtn.disabled = true;
+            loginBtn.innerHTML = '<span class="material-icons-round animate-spin">sync</span> Creating account...';
+            
+            try {
+              await RiskBiteAPI.register(email, password);
+              showNotification('Account created! Please log in.', 'success');
+              
+              // Switch back to login mode
+              document.querySelector('h2').textContent = 'Welcome Back';
+              document.querySelector('#loginForm .text-gray-500').textContent = 'Please enter your details to sign in to your account.';
+              loginBtn.textContent = 'Log In';
+              signUpLink.textContent = 'Sign Up for free';
+            } catch (error) {
+              errorMessage.textContent = error.message;
+              errorMessage.classList.remove('hidden');
+            }
+            
+            loginBtn.disabled = false;
+            loginBtn.textContent = 'Sign Up';
+          };
+          
+          signUpLink.onclick = function(e) {
+            e.preventDefault();
+            location.reload();
+          };
+        });
+      }
+      
+      // Load remembered email
+      const rememberedEmail = localStorage.getItem('remembered_email');
+      if (rememberedEmail) {
+        document.getElementById('email').value = rememberedEmail;
+        document.getElementById('remember-me').checked = true;
+      }
+    });
+    
+    // Notification function
+    function showNotification(message, type = 'info') {
+      const notification = document.getElementById('notification');
+      const colors = {
+        'success': 'bg-primary text-[#0d1b12]',
+        'error': 'bg-red-500 text-white',
+        'info': 'bg-blue-500 text-white'
+      };
+      
+      notification.className = 'fixed top-5 right-5 p-4 rounded-lg font-semibold z-[9999] ' + (colors[type] || colors['info']);
+      notification.textContent = message;
+      notification.classList.remove('hidden');
+      
+      setTimeout(() => {
+        notification.classList.add('hidden');
+      }, 5000);
+    }
+  </script>
+</body>
+</html>

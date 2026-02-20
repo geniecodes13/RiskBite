@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ========================================== 
+       METADATA & DOCUMENT SETUP
+       ========================================== -->
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RiskBite Ingredient Analysis Results</title>
+  
+  <!-- ========================================== 
+       EXTERNAL DEPENDENCIES
+       ========================================== -->
+  <!-- Tailwind CSS Framework -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- Google Fonts: Material Symbols (icons) -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  
+  <!-- Google Fonts: Manrope (typography) -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  
+  <!-- ========================================== 
+       TAILWIND CSS CONFIGURATION
+       ========================================== -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          /* Custom color palette for RiskBite */
+          colors: {
+            "primary": "#13ec5b",               /* Bright green accent color */
+            "background-light": "#f6f8f6",      /* Light mode background */
+            "background-dark": "#102216",       /* Dark mode background */
+          },
+          /* Font family configuration */
+          fontFamily: {
+            "display": ["Manrope", "sans-serif"]  /* Main font for all text */
+          },
+          /* Custom border radius values */
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+  
+  <!-- ========================================== 
+       GLOBAL STYLES & CUSTOM SCROLLBAR
+       ========================================== -->
+  <style type="text/tailwindcss">
+    @layer base {
+      body {
+        font-family: 'Manrope', sans-serif;
+      }
+    }
+    
+    /* Material Symbols icon configuration */
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    
+    /* Custom scrollbar styling for webkit browsers (Chrome, Safari, Edge) */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cfe7d7;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#0d1b12] font-display">
+
+
+  <!-- ========================================== 
+       MAIN PAGE CONTAINER
+       ========================================== -->
+  <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+    
+    <!-- ========================================== 
+         PAGE HEADER (STICKY)
+         Contains: Logo, Navigation, Search, Notifications
+         ========================================== -->
+    <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e7f3eb] bg-white px-6 lg:px-10 py-3 sticky top-0 z-50">
+      
+      <!-- LEFT SECTION: Logo & Navigation -->
+      <div class="flex items-center gap-8">
+        
+        <!-- Logo Section (Clickable - Links to Landing Page) -->
+        <a href="landing.html" class="flex items-center gap-4 text-[#0d1b12] hover:opacity-80 transition-opacity">
+          <!-- Logo Image -->
+          <img src="image/logo.jpg" alt="RiskBite Logo" class="h-10 w-10 object-cover rounded"/>
+          <!-- Brand Name -->
+          <div class="flex flex-col">
+            <h2 class="text-[#0d1b12] text-xl font-bold leading-none tracking-[-0.015em]">RiskBite</h2>
+            <span class="text-[8px] font-bold tracking-widest text-[#4c9a66] uppercase">Know Your Bite</span>
+          </div>
+        </a>
+        
+        <!-- Navigation Menu (Hidden on Mobile, Visible on Desktop) -->
+        <nav class="hidden lg:flex items-center gap-9">
+          <a class="text-[#0d1b12] text-sm font-medium leading-normal hover:text-primary transition-colors" href="dashboard.html">Dashboard</a>
+          <a class="text-[#0d1b12] text-sm font-medium leading-normal hover:text-primary transition-colors border-b-2 border-primary" href="scan.html">Analysis</a>
+          <a class="text-[#0d1b12] text-sm font-medium leading-normal hover:text-primary transition-colors" href="landing.html">Community</a>
+        </nav>
+        
+      </div>
+      
+      <!-- RIGHT SECTION: Search Bar, Notifications, Profile -->
+      <div class="flex flex-1 justify-end gap-6 items-center">
+        
+        <!-- Search Bar (Hidden on Mobile, Visible on Medium+ screens) -->
+        <label class="hidden md:flex flex-col min-w-40 h-10 max-w-64">
+          <div class="flex w-full flex-1 items-stretch rounded-lg h-full border border-[#cfe7d7]">
+            <!-- Search Icon -->
+            <div class="text-[#4c9a66] flex bg-[#e7f3eb] items-center justify-center pl-4 rounded-l-lg">
+              <span class="material-symbols-outlined">search</span>
+            </div>
+            <!-- Search Input -->
+            <input class="form-input flex w-full min-w-0 flex-1 border-none bg-[#e7f3eb] focus:ring-0 h-full placeholder:text-[#4c9a66] px-4 rounded-r-lg text-sm" placeholder="Search additives..." value=""/>
+          </div>
+        </label>
+        
+        <!-- Action Buttons: Notifications & Profile -->
+        <div class="flex gap-2">
+          <!-- Notifications Button -->
+          <button class="flex items-center justify-center rounded-lg h-10 w-10 bg-[#e7f3eb] text-[#0d1b12] hover:bg-primary/20 transition-all">
+            <span class="material-symbols-outlined">notifications</span>
+          </button>
+          <!-- User Profile Button -->
+          <button class="flex items-center justify-center rounded-lg h-10 w-10 bg-[#e7f3eb] text-[#0d1b12] hover:bg-primary/20 transition-all">
+            <span class="material-symbols-outlined">account_circle</span>
+          </button>
+        </div>
+        
+      </div>
+      
+    </header>
+    
+    <!-- ========================================== 
+         MAIN CONTENT AREA (Flex Container)
+         Contains: Sidebar + Main Content
+         ========================================== -->
+    <div class="flex flex-1 overflow-hidden">
+      
+      <!-- ========================================== 
+           LEFT SIDEBAR (Desktop Only)
+           Contains: Navigation Links & Recent Scan History
+           ========================================== -->
+      <aside class="w-64 bg-white border-r border-[#e7f3eb] flex flex-col h-[calc(100vh-65px)] sticky top-[65px] hidden xl:flex">
+        
+        <!-- Sidebar Content Wrapper -->
+        <div class="p-6 flex flex-col gap-6 overflow-y-auto custom-scrollbar">
+          
+          <!-- CORE NAVIGATION SECTION -->
+          <div>
+            <h3 class="text-[#4c9a66] text-xs font-bold uppercase tracking-wider mb-4">Core Navigation</h3>
+            <div class="flex flex-col gap-1">
+              <!-- Recent Scans (Active) -->
+              <a href="scan.html" class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-[#0d1b12] font-semibold hover:bg-primary/20 transition-colors">
+                <span class="material-symbols-outlined">history</span>
+                <p class="text-sm">Recent Scans</p>
+              </a>
+              <!-- Saved Reports -->
+              <a href="dashboard.html#saved-reports" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#f8fcf9] text-[#0d1b12] transition-colors">
+                <span class="material-symbols-outlined">bookmark</span>
+                <p class="text-sm">Saved Reports</p>
+              </a>
+              <!-- Health Trends -->
+              <a href="dashboard.html#health-trends" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#f8fcf9] text-[#0d1b12] transition-colors">
+                <span class="material-symbols-outlined">analytics</span>
+                <p class="text-sm">Health Trends</p>
+              </a>
+            </div>
+          </div>
+          
+          <!-- RECENT HISTORY SECTION -->
+          <div>
+            <h3 class="text-[#4c9a66] text-xs font-bold uppercase tracking-wider mb-4">Recent History</h3>
+            <div class="flex flex-col gap-3">
+              <!-- Recent Scan 1: Processed Meat (Warning) -->
+              <a href="scan.html" class="flex items-center gap-3 p-2 rounded-lg border border-[#e7f3eb] hover:shadow-sm hover:border-[#4c9a66] transition-all">
+                <div class="w-10 h-10 bg-[#f0f9f1] rounded flex items-center justify-center">
+                  <span class="material-symbols-outlined text-orange-500">warning</span>
+                </div>
+                <div class="flex flex-col">
+                  <p class="text-xs font-bold truncate w-24">Processed Meat Label</p>
+                  <p class="text-[10px] text-[#4c9a66]">24 Oct, 2023</p>
+                </div>
+              </a>
+              <!-- Recent Scan 2: Organic Almond Milk (Safe) -->
+              <a href="scan.html" class="flex items-center gap-3 p-2 rounded-lg border border-[#e7f3eb] hover:shadow-sm hover:border-[#4c9a66] transition-all">
+                <div class="w-10 h-10 bg-[#f0f9f1] rounded flex items-center justify-center">
+                  <span class="material-symbols-outlined text-primary">check_circle</span>
+                </div>
+                <div class="flex flex-col">
+                  <p class="text-xs font-bold truncate w-24">Organic Almond Milk</p>
+                  <p class="text-[10px] text-[#4c9a66]">22 Oct, 2023</p>
+                </div>
+              </a>
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- LOGOUT BUTTON (Bottom of Sidebar) -->
+        <div class="mt-auto p-6 border-t border-[#e7f3eb]">
+          <a href="login.html" class="flex items-center gap-3 px-3 py-2 text-[#0d1b12] hover:text-red-600 hover:bg-red-50 rounded transition-colors">
+            <span class="material-symbols-outlined">logout</span>
+            <p class="text-sm font-medium">Logout</p>
+          </a>
+        </div>
+        
+      </aside>
+      
+      <!-- ========================================== 
+           MAIN CONTENT AREA
+           Contains: Page Header, Results Cards, Analysis Table
+           ========================================== -->
+      <main class="flex-1 overflow-y-auto p-4 lg:p-8 bg-background-light">
+        
+        <!-- ========================================== 
+             PAGE HEADER SECTION
+             Breadcrumb, Title, Action Buttons
+             ========================================== -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
+          
+          <!-- Left: Title & Metadata -->
+          <div>
+            <!-- Breadcrumb Navigation -->
+            <nav class="flex gap-2 text-xs text-[#4c9a66] mb-2">
+              <span>Analysis</span>
+              <span>/</span>
+              <span>Processed Foods</span>
+            </nav>
+            <!-- Page Title -->
+            <h1 class="text-2xl lg:text-3xl font-black tracking-tight text-[#0d1b12]">Results: processed_meat_label_01.jpg</h1>
+            <!-- Scan Date & Time -->
+            <p class="text-[#4c9a66] mt-1 flex items-center gap-2 text-sm">
+              <span class="material-symbols-outlined text-sm">event</span> 
+              Scanned on October 24, 2023 at 14:45 PM
+            </p>
+          </div>
+          
+          <!-- Right: Action Buttons -->
+          <div class="flex flex-wrap gap-3">
+            <!-- Share Button -->
+            <button onclick="window.open('mailto:?subject=RiskBite Analysis Report&body=Check out this ingredient analysis report!')" class="flex items-center gap-2 px-4 h-11 bg-white border border-[#cfe7d7] rounded-lg text-sm font-bold hover:bg-[#f8fcf9] transition-all" title="Share report via email">
+              <span class="material-symbols-outlined">share</span> 
+              Share
+            </button>
+            <!-- Download PDF Button -->
+            <a href="#" onclick="alert('PDF download feature coming soon!'); return false;" class="flex items-center gap-2 px-4 h-11 bg-white border border-[#cfe7d7] rounded-lg text-sm font-bold hover:bg-[#f8fcf9] transition-all" title="Download PDF report">
+              <span class="material-symbols-outlined">download</span> 
+              PDF Report
+            </a>
+            <!-- Re-scan Label Button (Primary) - Opens file input dialog -->
+            <button onclick="document.getElementById('rescanFileInput').click(); return false;" class="flex items-center gap-2 px-6 h-11 bg-primary text-[#0d1b12] rounded-lg text-sm font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all whitespace-nowrap" title="Scan another food label">
+              <span class="material-symbols-outlined">refresh</span> 
+              Re-scan Label
+            </button>
+            <!-- Hidden File Input for Re-scan -->
+            <input id="rescanFileInput" type="file" accept="image/*,.pdf" style="display: none;" onchange="alert('File selected: ' + this.files[0].name); this.value = '';" />
+          </div>
+          
+        </div>
+        
+        <!-- ========================================== 
+             EXECUTIVE SUMMARY CARD
+             Safety Score + Critical Alerts
+             ========================================== -->
+        <div class="bg-white rounded-xl border border-[#cfe7d7] p-6 mb-8 flex flex-col md:flex-row gap-8 items-center shadow-sm">
+          
+          <!-- SAFETY SCORE SECTION -->
+          <div class="w-full md:w-1/3 md:border-r border-[#e7f3eb] md:pr-8">
+            <!-- Header with Info Icon -->
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-bold text-lg">Safety Score</h3>
+              <span class="material-symbols-outlined text-[#4c9a66]">info</span>
+            </div>
+            
+            <!-- Score Display -->
+            <div class="flex items-center gap-6">
+              <!-- Circular Score Gauge -->
+              <div class="relative flex items-center justify-center">
+                <div class="w-24 h-24 rounded-full border-8 border-red-500/20 flex items-center justify-center">
+                  <div class="w-24 h-24 rounded-full border-8 border-red-500 border-t-transparent absolute -rotate-45"></div>
+                  <span class="text-3xl font-black text-red-500">42</span>
+                </div>
+              </div>
+              <!-- Score Description -->
+              <div class="flex flex-col">
+                <span class="text-xs font-bold text-red-600 bg-red-50 px-2 py-1 rounded w-fit mb-1">LOW SAFETY</span>
+                <p class="text-sm text-[#4c9a66] leading-snug">This score is 12% lower than similar products in this category.</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- CRITICAL ALERTS SECTION -->
+          <div class="flex-1">
+            <!-- Alert Header -->
+            <div class="flex items-center gap-2 text-red-600 mb-2">
+              <span class="material-symbols-outlined">warning</span>
+              <h3 class="font-bold uppercase tracking-wide text-xs">Critical Alerts (3 Detected)</h3>
+            </div>
+            
+            <!-- Alert Description -->
+            <p class="text-[#0d1b12] text-base leading-relaxed mb-4">
+              Analysis found 
+              <span class="font-bold text-red-600">Sodium Nitrite</span>, 
+              <span class="font-bold text-red-600">High Fructose Corn Syrup</span>, 
+              and 
+              <span class="font-bold text-red-600">Red 40</span>. 
+              These are linked to inflammatory responses and metabolic issues.
+            </p>
+            
+            <!-- Alert Tags -->
+            <div class="flex flex-wrap gap-2">
+              <div class="flex items-center gap-1 bg-[#fef2f2] text-red-700 px-3 py-1.5 rounded-full text-xs font-bold border border-red-100">Carcinogenic Risk</div>
+              <div class="flex items-center gap-1 bg-[#fef2f2] text-red-700 px-3 py-1.5 rounded-full text-xs font-bold border border-red-100">Artificial Dye</div>
+              <div class="flex items-center gap-1 bg-[#fef2f2] text-red-700 px-3 py-1.5 rounded-full text-xs font-bold border border-red-100">Metabolic Disruptor</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- ========================================== 
+             TWO-PANE ANALYSIS LAYOUT
+             Left: Scanned Label View
+             Right: Analysis Results Table
+             ========================================== -->
+        <div class="flex flex-col xl:flex-row gap-8">
+          
+          <!-- ========================================== 
+               LEFT PANE: SCANNED LABEL VIEW
+               Shows OCR text from food label with highlighted ingredients
+               ========================================== -->
+          <div class="w-full xl:w-5/12 flex flex-col gap-4">
+            
+            <!-- Label View Card -->
+            <div class="bg-white rounded-xl border border-[#cfe7d7] overflow-hidden flex flex-col h-[500px] xl:h-[650px] shadow-sm">
+              
+              <!-- Card Header with Zoom Controls -->
+              <div class="p-4 border-b border-[#e7f3eb] flex justify-between items-center bg-[#fcfdfc]">
+                <h3 class="font-bold text-sm flex items-center gap-2">
+                  <span class="material-symbols-outlined text-primary">image</span> 
+                  Scanned Label View
+                </h3>
+                <!-- Zoom Buttons -->
+                <div class="flex gap-2">
+                  <button class="p-1 hover:bg-[#e7f3eb] rounded"><span class="material-symbols-outlined text-sm">zoom_in</span></button>
+                  <button class="p-1 hover:bg-[#e7f3eb] rounded"><span class="material-symbols-outlined text-sm">zoom_out</span></button>
+                </div>
+              </div>
+              
+              <!-- Scrollable Label Content -->
+              <div class="flex-1 p-6 overflow-y-auto custom-scrollbar bg-[#fafafa]">
+                <div class="relative rounded-lg border border-[#e2e8f0] bg-white p-8 shadow-inner min-h-full">
+                  
+                  <!-- Background texture from OCR label image -->
+                  <div class="bg-cover bg-center absolute inset-0 opacity-10 pointer-events-none" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCjsbLPjuQLH50cFh0rvF-NFpXIzfiA88Q5tCe2BzqbhnzzzXE39LFZdtKWJIX1dJIiiglKM9fu9wnnR1vauOzG0kse1naBY1m7eMGHhi10WfmlvBGBudxswSeoNobvAOdzAUG_8OmMrGLp4dSW-GZLK-VDRGvMyC5ywg0wvUtunQ4BWs-GT7gq6sJQHKB6elLiao8qvA_9w33_qItXkt2ofeq4RymfDKhNVr8p9AOB1wWgMJWRFd96ACzzRv5Th7z_4Pm37uhZpYQ');"></div>
+                  
+                  <!-- OCR Text Content -->
+                  <div class="relative z-10 leading-relaxed font-mono text-sm text-slate-700 space-y-4">
+                    <p class="uppercase font-bold border-b border-slate-200 pb-2 mb-4">Ingredients List:</p>
+                    <p>
+                      Water, Beef, Pork, 
+                      <span class="bg-red-100 text-red-800 border-b-2 border-red-500 font-bold px-1 cursor-help" title="High Risk detected">Sodium Nitrite</span>, 
+                      Salt, 
+                      <span class="bg-yellow-100 text-yellow-800 border-b-2 border-yellow-500 px-1 cursor-help" title="Medium Risk detected">Modified Starch</span>, 
+                      Dextrose, 
+                      <span class="bg-red-100 text-red-800 border-b-2 border-red-500 font-bold px-1 cursor-help" title="High Risk detected">High Fructose Corn Syrup</span>, 
+                      Sodium Phosphate, 
+                      <span class="bg-red-100 text-red-800 border-b-2 border-red-500 font-bold px-1 cursor-help" title="High Risk detected">Red 40</span>, 
+                      <span class="bg-green-100 text-green-800 border-b-2 border-green-500 px-1 cursor-help" title="Low Risk detected">Garlic Powder</span>, 
+                      Onion Extract, 
+                      <span class="bg-yellow-100 text-yellow-800 border-b-2 border-yellow-500 px-1 cursor-help" title="Medium Risk detected">Sodium Erythorbate</span>.
+                    </p>
+                    
+                    <!-- OCR Engine Attribution -->
+                    <div class="mt-8 pt-8 border-t border-dashed border-slate-300">
+                      <p class="text-xs text-slate-400 italic">OCR engine: RiskBite Vision v2.1.0-beta</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Pro Tip Card -->
+            <div class="bg-[#13ec5b]/5 border border-primary/20 rounded-xl p-4 flex items-start gap-3">
+              <span class="material-symbols-outlined text-primary">lightbulb</span>
+              <p class="text-xs text-[#0d1b12] leading-tight">
+                <span class="font-bold">Pro Tip:</span> High-risk items now include healthy swap suggestions to help you make better shopping choices.
+              </p>
+            </div>
+          </div>
+          
+          <!-- ========================================== 
+               RIGHT PANE: ANALYSIS RESULTS TABLE
+               Detailed ingredient breakdown with health alternatives
+               ========================================== -->
+          <div class="w-full xl:w-7/12">
+            <div class="bg-white rounded-xl border border-[#cfe7d7] overflow-hidden shadow-sm flex flex-col h-[650px]">
+              
+              <!-- Table Header with Title and Filter -->
+              <div class="p-4 border-b border-[#e7f3eb] flex flex-wrap justify-between items-center bg-[#fcfdfc] gap-4">
+                <h3 class="font-bold text-sm flex items-center gap-2">
+                  <span class="material-symbols-outlined text-primary">list_alt</span> 
+                  Analysis Results with Healthy Alternatives
+                </h3>
+                <!-- Risk Level Filter Dropdown -->
+                <div class="flex items-center gap-4">
+                  <span class="text-xs text-[#4c9a66]">Filter by:</span>
+                  <select class="text-xs border-[#e7f3eb] rounded bg-transparent focus:ring-primary py-1 px-2">
+                    <option>All Risks</option>
+                    <option>High Risk Only</option>
+                    <option>Chemicals</option>
+                  </select>
+                </div>
+              </div>
+              
+              <!-- Scrollable Table Content -->
+              <div class="flex-1 overflow-x-auto custom-scrollbar overflow-y-auto">
+                <table class="w-full text-left border-collapse min-w-[700px]">
+                  
+                  <!-- TABLE HEADER -->
+                  <thead class="bg-[#f8fcf9] sticky top-0 z-10 border-b border-[#e7f3eb]">
+                    <tr>
+                      <th class="px-4 lg:px-6 py-4 text-[10px] font-bold text-[#4c9a66] uppercase tracking-wider w-1/4">Ingredient Name</th>
+                      <th class="px-4 lg:px-6 py-4 text-[10px] font-bold text-[#4c9a66] uppercase tracking-wider w-1/4">Simple Explanation</th>
+                      <th class="px-4 lg:px-6 py-4 text-[10px] font-bold text-[#4c9a66] uppercase tracking-wider w-1/6">Risk Level</th>
+                      <th class="px-4 lg:px-6 py-4 text-[10px] font-bold text-[#4c9a66] uppercase tracking-wider w-1/3">Healthy Alternatives</th>
+                    </tr>
+                  </thead>
+                  
+                  <!-- TABLE BODY - INGREDIENT ROWS -->
+                  <tbody class="divide-y divide-[#e7f3eb]">
+                    
+                    <!-- ROW 1: Sodium Nitrite (HIGH RISK) -->
+                    <tr class="hover:bg-[#fef2f2] transition-colors group">
+                      <td class="px-4 lg:px-6 py-5">
+                        <p class="font-bold text-[#0d1b12] text-sm">Sodium Nitrite</p>
+                        <p class="text-[10px] text-red-500 font-bold">E250</p>
+                      </td>
+                      <td class="px-4 lg:px-6 py-5">
+                        <p class="text-[13px] text-[#4c9a66] leading-snug">
+                          Used to preserve meat color and prevent bacteria. Linked to cancer risks.
+                        </p>
+                      </td>
+                      <td class="px-4 lg:px-6 py-5">
+                        <span class="bg-red-500 text-white text-[9px] font-black px-2 py-1 rounded-full uppercase whitespace-nowrap">High Risk</span>
+                      </td>
+                      <td class="px-4 lg:px-6 py-5">
+                        <div class="bg-white/60 p-2 rounded border border-red-100 flex items-start gap-2">
+                          <span class="material-symbols-outlined text-green-600 text-sm">recommend</span>
+                          <p class="text-[11px] font-medium text-[#0d1b12] leading-tight">
+                            Nitrite-free organic meats; Natural celery powder cured meats.
+                          </p>
+                        </div>
+                      </td>
+                    </tr>
+                    
+                    <!-- ROW 2: Red 40 (HIGH RISK) -->
+                    <tr class="hover:bg-[#fef2f2] transition-colors group">
+                      <td class="px-4 lg:px-6 py-5">
+                        <p class="font-bold text-[#0d1b12] text-sm">Red 40</p>
+                        <p class="text-[10px] text-red-500 font-bold">Allura Red AC</p>
+                      </td>
+                      <td class="px-4 lg:px-6 py-5">
+                        <p class="text-[13px] text-[#4c9a66] leading-snug">
+                          Petroleum dye linked to hyperactivity and potential carcinogens.
+                        </p>
+                      </td>
+                      <td class="px-4 lg:px-6 py-5">
+                        <span class="bg-red-500 text-white text-[9px] font-black px-2 py-1 rounded-full uppercase whitespace-nowrap">High Risk</span>
+                      </td>
+                      <td class="px-4 lg:px-6 py-5">
+                        <div class="bg-white/60 p-2 rounded border border-red-100 flex items-start gap-2">
+                          <span class="material-symbols-outlined text-green-600 text-sm">recommend</span>
+                          <p class="text-[11px] font-medium text-[#0d1b12] leading-tight">
+                            Beet juice or fruit-based colorants.
+                          </p>
+                        </div>
+                      </td>
+                    </tr>
+                    
+                    <!-- ROW 3: High Fructose Corn Syrup (HIGH RISK) -->
+                    <tr class="hover:bg-[#fef2f2] transition-colors group">
+                      <td class="px-4 lg:px-6 py-5">
+                        <p class="font-bold text-[#0d1b12] text-sm">High Fructose Corn Syrup</p>
+                        <p class="text-[10px] text-red-500 font-bold">Sweetener</p>
+                      </td>
+                      <td class="px-4 lg:px-6 py-5">
+                        <p class="text-[13px] text-[#4c9a66] leading-snug">
+                          Highly processed sugar linked to obesity and metabolic disorders.
+                        </p>
+                      </td>
+                      <td class="px-4 lg:px-6 py-5">
+                        <span class="bg-red-500 text-white text-[9px] font-black px-2 py-1 rounded-full uppercase whitespace-nowrap">High Risk</span>
+                      </td>
+                      <td class="px-4 lg:px-6 py-5">
+                        <div class="bg-white/60 p-2 rounded border border-red-100 flex items-start gap-2">
+                          <span class="material-symbols-outlined text-green-600 text-sm">recommend</span>
+                          <p class="text-[11px] font-medium text-[#0d1b12] leading-tight">
+                            Honey, pure maple syrup, or products with no added sugars.
+                          </p>
+                        </div>
+                      </td>
+                    </tr>
+                    
+                    <!-- ROW 4: Modified Starch (MEDIUM RISK) -->
+                    <tr class="hover:bg-amber-50 transition-colors group">
+                      <td class="px-4 lg:px-6 py-5">
+                        <p class="font-bold text-[#0d1b12] text-sm">Modified Starch</p>
+                        <p class="text-[10px] text-amber-600 font-bold">Thickener</p>
+                      </td>
+                      <td class="px-4 lg:px-6 py-5">
+                        <p class="text-[13px] text-[#4c9a66] leading-snug">
+                          Chemically treated corn/wheat starch. Often ultra-processed.
+                        </p>
+                      </td>
+                      <td class="px-4 lg:px-6 py-5">
+                        <span class="bg-amber-500 text-white text-[9px] font-black px-2 py-1 rounded-full uppercase whitespace-nowrap">Medium</span>
+                      </td>
+                      <td class="px-4 lg:px-6 py-5">
+                        <span class="text-[10px] text-[#999] italic">N/A for Medium Risk</span>
+                      </td>
+                    </tr>
+                    
+                    <!-- ROW 5: Garlic Powder (LOW RISK) -->
+                    <tr class="hover:bg-primary/5 transition-colors group">
+                      <td class="px-4 lg:px-6 py-5">
+                        <p class="font-bold text-[#0d1b12] text-sm">Garlic Powder</p>
+                        <p class="text-[10px] text-primary font-bold">Natural</p>
+                      </td>
+                      <td class="px-4 lg:px-6 py-5">
+                        <p class="text-[13px] text-[#4c9a66] leading-snug">
+                          Dehydrated garlic. Safe and contains beneficial antioxidants.
+                        </p>
+                      </td>
+                      <td class="px-4 lg:px-6 py-5">
+                        <span class="bg-primary text-[#0d1b12] text-[9px] font-black px-2 py-1 rounded-full uppercase whitespace-nowrap">Low Risk</span>
+                      </td>
+                      <td class="px-4 lg:px-6 py-5">
+                        <span class="text-[10px] text-[#999] italic">N/A for Low Risk</span>
+                      </td>
+                    </tr>
+                    
+                  </tbody>
+                  
+                </table>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+      </main>
+      
+    </div>
+    
+  </div>
+  
+</body>
+</html>
